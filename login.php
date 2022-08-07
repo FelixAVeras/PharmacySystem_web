@@ -1,6 +1,6 @@
 <?php
 
-include_once './config/connection.php';
+require_once 'config/connection.php';
 
 ?>
 
@@ -27,14 +27,14 @@ include_once './config/connection.php';
 				<div class="card">
 					<h5 class="card-header text-center">Inicio de Sesion</h5>
 					<div class="card-body">
-						<form action="./controllers/LoginController.php" method="POST">
+						<form action="" id="login-form" method="POST">
 							<div class="form-group mb-3">
 								<label for="username">Nombre de Usuario</label>
 								<div class="input-group mb-3">
 								  <span class="input-group-text" id="basic-addon1">
 								  	<i class="bi bi-person-fill"></i>
 								  </span>
-								  <input type="text" class="form-control" name="username">
+								  <input type="text" class="form-control" id="username" name="username">
 								</div>
 							</div>
 							<div class="form-group mb-3">
@@ -43,11 +43,11 @@ include_once './config/connection.php';
 								  <span class="input-group-text" id="basic-addon1">
 								  	<i class="bi bi-lock-fill"></i>
 								  </span>
-								  <input type="password" class="form-control" name="password">
+								  <input type="password" class="form-control" id="password" name="password">
 								</div>
 							</div>
 							<div class="mt-3 d-grid gap-2">
-								<button type="submit" class="btn btn-primary">Iniciar</button>
+								<button type="submit" id="btnSubmit" class="btn btn-primary">Iniciar</button>
 							</div>
 						</form>
 					</div>
@@ -58,5 +58,7 @@ include_once './config/connection.php';
 		</div>
 	</div>
 
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="js/auth.js"></script>
 </body>
 </html>
