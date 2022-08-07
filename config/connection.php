@@ -1,9 +1,9 @@
 <?php
 
-$connection = new mysql_connect('localhost', 'root', '', 'pharmacysystemdb');
+$connection = mysqli_connect('localhost', 'root', '', 'pharmacydb');
 
-if ($connection->connect_eror) {
-	die('Conexion fallida: '. $connection->connect_eror);
+if ($connection->connect_error) {
+	die('Conexion fallida: '. $connection->connect_error);
 }
 
 ?>
