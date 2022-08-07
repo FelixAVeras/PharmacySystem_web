@@ -27,7 +27,7 @@ include_once './config/connection.php';
 				<div class="card">
 					<h5 class="card-header text-center">Inicio de Sesion</h5>
 					<div class="card-body">
-						<form action="" method="POST">
+						<form action="./controllers/LoginController.php" method="POST">
 							<div class="form-group mb-3">
 								<label for="username">Nombre de Usuario</label>
 								<div class="input-group mb-3">
