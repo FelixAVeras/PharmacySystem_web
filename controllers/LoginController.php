@@ -1,5 +1,5 @@
 <?php  
-  require('./config/conexion.php');
+  require('../config/connection.php');
 
   session_start();
 
@@ -30,11 +30,11 @@
       $_SESSION["apellidos"] = $rs->apellidos;
       $_SESSION["idnivel"]   = $rs->idnivel;
 
-      header("location: index.php");
+      header("location: ../dashboard.php");
     } else { 
-        header("location: login.php?m=1"); 
+        header("location: ../login.php?m=1"); 
       }
     } else { 
-      header("location: login.php"); 
+      header("location: ../login.php"); 
     }
 ?>
