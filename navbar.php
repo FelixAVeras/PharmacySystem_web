@@ -4,20 +4,24 @@
                 <div class="sidebar-heading border-bottom bg-light">Pharmacy System</div>
                 <div class="list-group list-group-flush">
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Inicio</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Inventario
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                     Link with href
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" data-bs-toggle="collapse" href="#collapseInventario" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    Inventario <i class="bi bi-chevron-down"></i>
                    </a>
-                   <div class="collapse" id="collapseExample">
-                <div class="card card-body">
-                  Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
-                </div>
-              </div>
-                  </a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Overview</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Events</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Profile</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Status</a>
+                   <div class="collapse" id="collapseInventario">
+                      <div class="list-group">
+                        <a href="" class="list-group-item list-group-item-action">Categorias</a>
+                        <a href="" class="list-group-item list-group-item-action">Productos</a>
+                        <a href="" class="list-group-item list-group-item-action">Proveedores</a>
+                      </div>
+                    </div>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" data-bs-toggle="collapse" href="#collapseTienda">Tienda <i class="bi bi-chevron-down"></i></a>
+                    <div class="collapse" id="collapseTienda">
+                      <div class="list-group">
+                        <a href="" class="list-group-item list-group-item-action">Ventas</a>
+                        <a href="" class="list-group-item list-group-item-action">Punto de Ventas</a>
+                      </div>
+                    </div>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Reportes</a>
                 </div>
             </div>
             <!-- Page content wrapper-->
@@ -25,7 +29,7 @@
                 <!-- Top navigation-->
                 <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
                     <div class="container-fluid">
-                        <button class="btn btn-primary" id="sidebarToggle">Toggle Menu</button>
+                        <button class="btn btn-light" id="sidebarToggle"><i class="bi bi-list"></i></button>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
