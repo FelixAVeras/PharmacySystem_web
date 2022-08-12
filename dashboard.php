@@ -13,10 +13,16 @@ if(isset($_POST['btn_logout'])){
 <?php
 include ("headerLinks.php"); 
 ?>
-       
-        <?php
-    include ("navbar.php"); 
-    ?>
+    <div class="d-flex" id="wrapper">
+        <?php include('sidenav.php') ?>
+        <div id="page-content-wrapper">
+            <?php include ("navbar.php"); ?>
+            <div class="container-fluid">
+               <h1 class="text-center">Este es el Dashboard</h1>
+            </div>
+        </div>
+    </div>       
+
       
     
 
