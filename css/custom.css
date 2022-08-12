@@ -1,0 +1,17 @@
+.sidebar-custom{
+  background-color: #DEB841;
+  color: #fff;
+}
+
+.list-custom a {
+  background-color: #DEB841;
+  color:#fff;
+}
+
+.categorias .card{
+  background-color: #6D6A75;
+}
+
+h1{
+  color: red !important;
+}
