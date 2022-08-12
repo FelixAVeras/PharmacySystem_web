@@ -1,15 +1,3 @@
-$(document).ready(function() {
-
-// var btnSubmit = document.getElementById('btnSubmit');
-
-// btnSubmit.addEventListener('click', validateLogin(e));
-
-// function validateLogin(e) {
-// 	e.preventDefault;
-
-
-// }
-
 $('#login-form').submit(function(e) {
 	e.preventDefault();
 	var response;
@@ -33,6 +21,4 @@ $('#login-form').submit(function(e) {
 	} else {
 		document.location = 'login.php';
 	}
-});
-
 });
