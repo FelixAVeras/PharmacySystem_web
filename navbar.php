@@ -1,33 +1,64 @@
-<div class="d-flex" id="wrapper">
+
+        <link rel="stylesheet" href="./css/style.css">
+        <link rel="stylesheet" href="./css/custom.css">
+
+
+        <?php
+        include "config/connection.php";
+
+        if(!isset($_SESSION['username']) && !empty($_SESSION['username'])){    
+            header('Location: login.php');
+        }
+
+        if(isset($_POST['btn_logout'])){
+            session_destroy();
+            header('Location: login.php');
+        }
+        ?>
+        <?php
+        include ("./headerLinks.php"); 
+        ?>
+
+
+
+        <div class="d-flex" id="wrapper">
             <!-- Sidebar-->
             <div class="border-end bg-white" id="sidebar-wrapper">
-                <div class="sidebar-heading border-bottom bg-light">Pharmacy System</div>
+                <div class="sidebar-heading border-bottom ">Pharmacy System</div>
                 <div class="list-group list-group-flush">
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Inicio</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" data-bs-toggle="collapse" href="#collapseInventario" role="button" aria-expanded="false" aria-controls="collapseExample">
-                    Inventario <i class="bi bi-chevron-down"></i>
+                    Inventario <i class="bi bi-chevron-down float-end"></i>
                    </a>
                    <div class="collapse" id="collapseInventario">
                       <div class="list-group">
-                        <a href="" class="list-group-item list-group-item-action">Categorias</a>
+                        <a href="./inventario/categorias.php" class="list-group-item list-group-item-action">Categorias</a>
                         <a href="" class="list-group-item list-group-item-action">Productos</a>
                         <a href="" class="list-group-item list-group-item-action">Proveedores</a>
                       </div>
                     </div>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" data-bs-toggle="collapse" href="#collapseTienda">Tienda <i class="bi bi-chevron-down"></i></a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" data-bs-toggle="collapse" href="#collapseTienda">
+                    <i class="bi bi-shop"></i>
+                        Tienda <i class="bi bi-chevron-down float-end"></i></a>
                     <div class="collapse" id="collapseTienda">
                       <div class="list-group">
                         <a href="" class="list-group-item list-group-item-action">Ventas</a>
                         <a href="" class="list-group-item list-group-item-action">Punto de Ventas</a>
                       </div>
                     </div>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Reportes</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">
+                        Reportes
+                    </a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">
+                    <i class="bi bi-people-fill"></i>
+                        Empleados
+                    </a>
                 </div>
             </div>
             <!-- Page content wrapper-->
             <div id="page-content-wrapper">
                 <!-- Top navigation-->
-                <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                <nav class="navbar navbar-expand-lg navbar-light  border-bottom">
                     <div class="container-fluid">
                         <button class="btn btn-light" id="sidebarToggle"><i class="bi bi-list"></i></button>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -41,7 +72,11 @@
                                         <a class="dropdown-item" href="#!">Action</a>
                                         <a class="dropdown-item" href="#!">Another action</a>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#!">Something else here</a>
+                                        <a class="dropdown-item" href="#!">
+                                        <form method='post' action="">
+                                        <input class=" border-0 bg-body" type="submit" value="Cerrar Sesion" name="btn_logout">
+                                    </form>  
+                                        </a>
                                     </div>
                                 </li>
                             </ul>
@@ -50,21 +85,11 @@
                 </nav>
                 <!-- Page content-->
                 <div class="container-fluid">
-                    <h1 class="mt-4">Simple Sidebar</h1>
-                    <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p>
-                    <p>
-                        Make sure to keep all page content within the
-                        <code>#page-content-wrapper</code>
-                        . The top navbar is optional, and just for demonstration. Just create an element with the
-                        <code>#sidebarToggle</code>
-                        ID which will toggle the menu when clicked.
-                    </p>
+               
                 </div>
             </div>
           </div>
-  <form method='post' action="">
-    <input class="btn btn-link" type="submit" value="Cerrar Sesion" name="btn_logout">
-  </form>
+
 
     <script>
 
@@ -87,3 +112,7 @@
     });
 
     </script>
+
+<?php
+include ("./footerLinks.php"); 
+?>
