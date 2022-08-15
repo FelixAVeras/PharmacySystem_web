@@ -14,7 +14,7 @@
         <div class="collapse" id="collapseInventario">
             <div class="list-group">
             <a href="categorias.php" class="list-group-item list-group-item-action">Categorias</a>
-            <a href="" class="list-group-item list-group-item-action">Productos</a>
+            <a href="productos.php" class="list-group-item list-group-item-action">Productos</a>
             <a href="" class="list-group-item list-group-item-action">Proveedores</a>
             </div>
         </div>

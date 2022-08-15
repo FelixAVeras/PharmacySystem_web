@@ -15,12 +15,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     if (empty($categoryName_err)) {
         $sql = "INSERT INTO categoria (categoryName) VALUES (?)";
- 
+
         if($stmt = $connection->prepare($sql)){
+
             $stmt->bind_param("s", $param_name);
             
             $param_name = $categoryName;
-            
+
             if($stmt->execute()){
                 header("location: categorias.php");
                 exit();
