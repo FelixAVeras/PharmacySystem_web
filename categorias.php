@@ -43,7 +43,7 @@ if(isset($_POST['btn_logout'])){
             <div class="row mt-3 p-5 categorias">
             <?php
             
-            $query = "SELECT * FROM categorias";
+            $query = "SELECT * FROM categoria";
 
             $statement = $connection->query($query);
 
@@ -65,9 +65,10 @@ if(isset($_POST['btn_logout'])){
             </div>
             
             <?php
-                }
+                } 
+            } else {
+                echo '<h3 class="text-center text-danger">No hay <strong>Categorias</strong> que mostrar</h3>';
             }
-
             ?>
             </div>
         </div>

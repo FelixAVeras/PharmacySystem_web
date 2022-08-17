@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     
     if (empty($categoryName_err)) {
-        $sql = "INSERT INTO categorias (categoryName) VALUES (?)";
+        $sql = "INSERT INTO categoria (categoryName) VALUES (?)";
 
         if($stmt = $connection->prepare($sql)){
 
