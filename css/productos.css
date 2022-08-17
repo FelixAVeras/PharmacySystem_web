@@ -13,3 +13,35 @@
   width: 19%;
   border-radius: 8px;
 }
+
+.btn-detalles {
+  background-color: #2c9fa3;
+  color: #ffff;
+  padding: 8px;
+  width: 19%;
+  border-radius: 8px;
+}
+
+.btn-buscar {
+  background-color: #ff8826 !important;
+}
+
+.tittulo-table th {
+  color: #b31237;
+  font-size: 18px;
+}
+
+/* MODAL DETALLES */
+
+.footer-detalles button {
+  background-color: #f03813 !important;
+  color: #fff !important;
+}
+
+.titulo-producto {
+  color: #2c9fa3;
+}
+
+.titulo-modalDetalles {
+  color: #b31237;
+}

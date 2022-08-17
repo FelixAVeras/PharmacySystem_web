@@ -35,14 +35,14 @@ if(isset($_POST['btn_logout'])){
             </button>
             <div class="input-group mb-3 mt-3">
             <input type="text" class="form-control" placeholder="Buscar producto" aria-label="Recipient's username" aria-describedby="button-addon2">
-            <button class="btn btn-outline-secondary" type="button" id="button-addon2">
+            <button class="btn btn-outline-secondary btn-buscar border-0 text-white" type="button" id="button-addon2">
             <i class="bi bi-search"></i>
             </button>
             </div>
 
             <table class="table">
   <thead>
-    <tr>
+    <tr class="tittulo-table">
       <th scope="col">Código</th>
       <th scope="col">Nombre producto</th>
       <th scope="col">Categoria</th>
@@ -52,13 +52,16 @@ if(isset($_POST['btn_logout'])){
   </thead>
   <tbody class="table-group-divider">
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
+      <th scope="row">1223</th>
+      <td>Dramidon</td>
+      <td>Medicamentos</td>
+      <td>123.33</td>
+      <td class="">50</td>
       <td>
-      <button class="btn-editar mx-3 border-0">
+      <button class="btn-detalles border-0" data-bs-toggle="modal" data-bs-target="#modalDetalles">
+      <i class="bi bi-eye"></i>
+        </button>
+      <button class="btn-editar mx-2 border-0">
       <i class="bi bi-pencil-fill"></i>
       </button>
       <button class="btn-delete border-0">
@@ -67,13 +70,16 @@ if(isset($_POST['btn_logout'])){
       </td>
     </tr>
     <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-      <td>@fat</td>
+      <th scope="row">2202</th>
+      <td>Nosotras Buenas Noches</td>
+      <td>Cuidado intimo</td>
+      <td>100.00</td>
+      <td>12</td>
       <td>
-      <button class="btn-editar mx-3 border-0">
+      <button class="btn-detalles border-0">
+      <i class="bi bi-eye"></i> 
+    </button>
+      <button class="btn-editar mx-2 border-0">
       <i class="bi bi-pencil-fill"></i>
       </button>
       <button class="btn-delete border-0">
@@ -82,12 +88,34 @@ if(isset($_POST['btn_logout'])){
       </td>
     </tr>
     <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-      <td>@twitter</td>
+      <th scope="row">3345</th>
+      <td>Huggies Ultra Comfort</td>
+      <td>Cuidado bebe</td>
+      <td>355.00</td>
+      <td>12</td>
       <td>
-      <button class="btn-editar mx-3 border-0">
+      <button class="btn-detalles border-0">
+      <i class="bi bi-eye"></i>
+        </button>
+      <button class="btn-editar mx-2 border-0">
+      <i class="bi bi-pencil-fill"></i>
+      </button>
+      <button class="btn-delete border-0">
+      <i class="bi bi-trash3"></i>
+      </button>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">3346</th>
+      <td>Johnsons Talco 200Gr</td>
+      <td>Cuidado bebe</td>
+      <td>261.00</td>
+      <td>10</td>
+      <td>
+      <button class="btn-detalles border-0">
+      <i class="bi bi-eye"></i>
+        </button>
+      <button class="btn-editar mx-2 border-0">
       <i class="bi bi-pencil-fill"></i>
       </button>
       <button class="btn-delete border-0">
@@ -104,7 +132,7 @@ if(isset($_POST['btn_logout'])){
     </div>
 </div>   
 
-<div class="modal fade" id="addCategoryModal" data-bs-backdrop="static">
+        <div class="modal fade" id="addCategoryModal" data-bs-backdrop="static">
             <div class="modal-dialog">
                 <div class="modal-content">
                 <div class="modal-header">
@@ -155,8 +183,34 @@ if(isset($_POST['btn_logout'])){
                 </div>
             </div>
         </div>
-
-  
+         <!-- Modal -->
+        <div class="modal fade" id="modalDetalles" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title titulo-modalDetalles fw-bold" id="exampleModalLabel">Detalle productos</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            <div class="card border-0 m-auto" style="width: 18rem;">
+            <img src="img/dramidom.jpg" class="card-img-top" alt="...">
+            </div>
+          <div class="container mt-5">
+          <h5 class="titulo-producto fw-normal">Dramidom pastillas</h5>
+            <p class="fw-normal">
+                    Some quick example text to build on the card title and make up the bulk of the card's content.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia quisquam rem, 
+                    sit fugit aperiam doloribus ut assumenda accusantium architecto est vitae natus soluta similique,
+                     necessitatibus quibusdam, itaque perspiciatis rerum ab!
+            </p>
+          </div>
+            </div>
+            <div class="modal-footer footer-detalles">
+                <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
+            </div>
+            </div>
+        </div>
+        </div>
 
 <?php include ("footerLinks.php"); ?>
 
