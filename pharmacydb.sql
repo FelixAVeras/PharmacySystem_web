@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 17-08-2022 a las 16:43:44
--- Versión del servidor: 10.4.24-MariaDB
--- Versión de PHP: 8.1.6
+-- Host: 127.0.0.1
+-- Generation Time: Aug 18, 2022 at 12:07 AM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 8.0.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,31 +18,24 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `pharmacydb`
+-- Database: `pharmacydb`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `categorias`
+-- Table structure for table `categoria`
 --
 
-CREATE TABLE `categorias` (
-  `id` int(11) NOT NULL,
-  `categoryName` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `categorias`
---
-
-INSERT INTO `categorias` (`id`, `categoryName`) VALUES
-(1, 'Medicamentos');
+CREATE TABLE `categoria` (
+  `idCategoria` int(11) NOT NULL,
+  `categoryName` varchar(50) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `niveles`
+-- Table structure for table `niveles`
 --
 
 CREATE TABLE `niveles` (
@@ -53,7 +46,7 @@ CREATE TABLE `niveles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Volcado de datos para la tabla `niveles`
+-- Dumping data for table `niveles`
 --
 
 INSERT INTO `niveles` (`idnivel`, `nivel`, `descripcion`, `estado`) VALUES
@@ -65,7 +58,7 @@ INSERT INTO `niveles` (`idnivel`, `nivel`, `descripcion`, `estado`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `permisos`
+-- Table structure for table `permisos`
 --
 
 CREATE TABLE `permisos` (
@@ -83,7 +76,23 @@ CREATE TABLE `permisos` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuario`
+-- Table structure for table `producto`
+--
+
+CREATE TABLE `producto` (
+  `idProducto` int(11) NOT NULL,
+  `productName` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `productDescription` varchar(280) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `productCode` int(11) NOT NULL,
+  `productPrice` decimal(10,0) NOT NULL,
+  `productStock` int(11) NOT NULL,
+  `productCategory` varchar(100) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `usuario`
 --
 
 CREATE TABLE `usuario` (
@@ -100,32 +109,43 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Volcado de datos para la tabla `usuario`
+-- Dumping data for table `usuario`
 --
 
 INSERT INTO `usuario` (`idusuario`, `idnivel`, `nombre`, `apellidos`, `email`, `password`, `fecha_creacion`, `fecha_comunicacion`, `perfil`, `username`) VALUES
-(1, 4, 'Felix', 'Veras', 'fcarvajal44@gmail.com', 'test1234;', '2022-08-07 13:25:45', '2021-03-15 17:03:45', '', 'felix'),
-(2, 4, 'Isargenys', 'Contreras', 'isargenys@gmail.com', '12345', '2022-08-10 14:24:51', '2022-08-10 10:24:51', '', 'isargenys');
+(1, 4, 'Felix', 'Veras', 'fcarvajal44@gmail.com', 'test1234;', '2022-08-07 13:25:45', '2021-03-15 17:03:45', '', 'felix');
 
 --
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `categorias`
---
-ALTER TABLE `categorias`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `categorias`
+-- Indexes for table `categoria`
 --
-ALTER TABLE `categorias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `categoria`
+  ADD PRIMARY KEY (`idCategoria`);
+
+--
+-- Indexes for table `producto`
+--
+ALTER TABLE `producto`
+  ADD PRIMARY KEY (`idProducto`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `categoria`
+--
+ALTER TABLE `categoria`
+  MODIFY `idCategoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `producto`
+--
+ALTER TABLE `producto`
+  MODIFY `idProducto` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
