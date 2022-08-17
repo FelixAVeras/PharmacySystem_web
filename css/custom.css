@@ -1,17 +1,45 @@
-.sidebar-custom{
-  background-color: #DEB841;
+.sidebar-custom {
+  background-color: #b31237;
   color: #fff;
 }
 
 .list-custom a {
-  background-color: #DEB841;
-  color:#fff;
+  background-color: #b31237;
+  color: #fff;
 }
 
-.categorias .card{
-  background-color: #6D6A75;
+.categorias .card {
+  background-color: #ffb914;
 }
 
-h1{
-  color: red !important;
+.btnAgregar {
+  background-color: #2c9fa3;
+}
+h1 {
+  color: #b31237 !important;
+}
+
+.btnSidebar {
+  background-color: #b31237;
+  color: #fff;
+}
+
+.navTitulo a {
+  color: #b31237 !important;
+}
+
+/* Estilos modal */
+
+.titulo-modal {
+  color: #b31237;
+}
+
+.btn-cancelar {
+  background-color: #f03813;
+  color: #fff;
+}
+
+.btn-guardarC {
+  background-color: #2c9fa3;
+  color: #fff;
 }

@@ -20,6 +20,7 @@ if(isset($_POST['btn_logout'])){
     <title>Pharmacy System - Categorias</title>
     <?php include ("headerLinks.php"); ?>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/productos.css">
 </head>
 <body>
 <div class="d-flex" id="wrapper">
@@ -27,8 +28,8 @@ if(isset($_POST['btn_logout'])){
     <div id="page-content-wrapper">
         <?php include ("navbar.php"); ?>
         <div class="container-fluid">
-            <h2 class="text-center mt-3">Productos</h2>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCategoryModal">
+            <h1 class="text-center mt-3">Productos</h1>
+            <button type="button" class="btn btnAgregar text-white" data-bs-toggle="modal" data-bs-target="#addCategoryModal">
                 Agregar producto
                 <i class="bi bi-plus-lg"></i>
             </button>
@@ -56,6 +57,14 @@ if(isset($_POST['btn_logout'])){
       <td>Otto</td>
       <td>@mdo</td>
       <td>@mdo</td>
+      <td>
+      <button class="btn-editar mx-3 border-0">
+      <i class="bi bi-pencil-fill"></i>
+      </button>
+      <button class="btn-delete border-0">
+      <i class="bi bi-trash3"></i>
+      </button>
+      </td>
     </tr>
     <tr>
       <th scope="row">2</th>
@@ -63,12 +72,28 @@ if(isset($_POST['btn_logout'])){
       <td>Thornton</td>
       <td>@fat</td>
       <td>@fat</td>
+      <td>
+      <button class="btn-editar mx-3 border-0">
+      <i class="bi bi-pencil-fill"></i>
+      </button>
+      <button class="btn-delete border-0">
+      <i class="bi bi-trash3"></i>
+      </button>
+      </td>
     </tr>
     <tr>
       <th scope="row">3</th>
       <td colspan="2">Larry the Bird</td>
       <td>@twitter</td>
       <td>@twitter</td>
+      <td>
+      <button class="btn-editar mx-3 border-0">
+      <i class="bi bi-pencil-fill"></i>
+      </button>
+      <button class="btn-delete border-0">
+      <i class="bi bi-trash3"></i>
+      </button>
+      </td>
     </tr>
   </tbody>
 </table>

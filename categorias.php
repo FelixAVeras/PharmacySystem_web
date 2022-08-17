@@ -11,6 +11,8 @@ if(isset($_POST['btn_logout'])){
 }
 ?>
 
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,6 +22,8 @@ if(isset($_POST['btn_logout'])){
     <title>Pharmacy System - Categorias</title>
     <?php include ("headerLinks.php"); ?>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/custom.css">
+    
 </head>
 <body>
 <div class="d-flex" id="wrapper">
@@ -27,14 +31,19 @@ if(isset($_POST['btn_logout'])){
     <div id="page-content-wrapper">
         <?php include ("navbar.php"); ?>
         <div class="container-fluid">
-            <h2 class="text-center">Categorias</h2>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCategoryModal">Agregar Nueva <i class="bi bi-plus-lg"></i></button>
+            <h1 class="text-center fw-bold mb-5 mt-5">
+                Categorias
+            </h1>
+            <button type="button" class="btn btnAgregar text-white mb-3" data-bs-toggle="modal" data-bs-target="#addCategoryModal">
+                Agregar Nueva 
+                <i class="bi bi-plus-lg"></i>
+            </button>
 
             <hr>
-            <div class="row mt-3 categorias">
+            <div class="row mt-3 p-5 categorias">
             <?php
             
-            $query = "SELECT * FROM categoria";
+            $query = "SELECT * FROM categorias";
 
             $statement = $connection->query($query);
 
@@ -45,7 +54,7 @@ if(isset($_POST['btn_logout'])){
                     
             <div class="col-sm-4 mb-3">
                 <a class="text-decoration-none" href="">
-                <div class="card ">
+                <div class="card w-75">
                     <div class="card-body">
                         <h5 class="card-title text-center text-white">
                             <?php echo $row['categoryName']; ?>
@@ -68,21 +77,21 @@ if(isset($_POST['btn_logout'])){
 
         <div class="modal fade" id="addCategoryModal" data-bs-backdrop="static">
             <div class="modal-dialog">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Nueva Categoria</h5>
+                <div class="modal-content w-75">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title titulo-modal ms-auto" id="exampleModalLabel">Nueva Categoria</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form action="categoryController.php" method="post">
                         <div class="form-group">
-                            <label for="categoryName" class="control-label">Nombre Categoria</label>
-                            <input type="text" name="categoryName" class="form-control" id="categoryName">
+                            <label for="categoryName" class="control-label mb-3 text-dark">Nombre Categoria</label>
+                            <input type="text" name="categoryName" class="form-control mb-3" id="categoryName">
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-success">Guardar Cambios</button>
+                    <div class="modal-footer d-inline-flex justify-content-center ">
+                        <button type="button" class="btn btn-cancelar" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-guardarC">Guardar Cambios</button>
                     </form>
                 </div>
                 </div>

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Aug 10, 2022 at 03:48 PM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 8.0.7
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 17-08-2022 a las 16:43:44
+-- Versión del servidor: 10.4.24-MariaDB
+-- Versión de PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,31 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `pharmacydb`
+-- Base de datos: `pharmacydb`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `niveles`
+-- Estructura de tabla para la tabla `categorias`
+--
+
+CREATE TABLE `categorias` (
+  `id` int(11) NOT NULL,
+  `categoryName` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `categorias`
+--
+
+INSERT INTO `categorias` (`id`, `categoryName`) VALUES
+(1, 'Medicamentos');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `niveles`
 --
 
 CREATE TABLE `niveles` (
@@ -35,7 +53,7 @@ CREATE TABLE `niveles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `niveles`
+-- Volcado de datos para la tabla `niveles`
 --
 
 INSERT INTO `niveles` (`idnivel`, `nivel`, `descripcion`, `estado`) VALUES
@@ -47,7 +65,7 @@ INSERT INTO `niveles` (`idnivel`, `nivel`, `descripcion`, `estado`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `permisos`
+-- Estructura de tabla para la tabla `permisos`
 --
 
 CREATE TABLE `permisos` (
@@ -65,7 +83,7 @@ CREATE TABLE `permisos` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuario`
+-- Estructura de tabla para la tabla `usuario`
 --
 
 CREATE TABLE `usuario` (
@@ -82,11 +100,32 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `usuario`
+-- Volcado de datos para la tabla `usuario`
 --
 
 INSERT INTO `usuario` (`idusuario`, `idnivel`, `nombre`, `apellidos`, `email`, `password`, `fecha_creacion`, `fecha_comunicacion`, `perfil`, `username`) VALUES
-(1, 4, 'Felix', 'Veras', 'fcarvajal44@gmail.com', 'test1234;', '2022-08-07 13:25:45', '2021-03-15 17:03:45', '', 'felix');
+(1, 4, 'Felix', 'Veras', 'fcarvajal44@gmail.com', 'test1234;', '2022-08-07 13:25:45', '2021-03-15 17:03:45', '', 'felix'),
+(2, 4, 'Isargenys', 'Contreras', 'isargenys@gmail.com', '12345', '2022-08-10 14:24:51', '2022-08-10 10:24:51', '', 'isargenys');
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `categorias`
+--
+ALTER TABLE `categorias`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `categorias`
+--
+ALTER TABLE `categorias`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
