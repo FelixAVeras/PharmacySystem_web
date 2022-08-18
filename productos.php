@@ -34,8 +34,9 @@ if(isset($_POST['btn_logout'])){
                 <i class="bi bi-plus-lg"></i>
             </button>
             <div class="input-group mb-3 mt-3">
-                <input type="text" class="form-control" placeholder="Buscar producto" aria-label="Recipient's username" aria-describedby="button-addon2">
-                <button class="btn btn-outline-secondary" type="button" id="button-addon2">
+                <input type="text" class="form-control" placeholder="Buscar producto"
+                 aria-label="Recipient's username" aria-describedby="button-addon2">
+                <button class="btn btn-outline-secondary btn-buscar border-0 text-white" type="button" id="button-addon2">
                     <i class="bi bi-search"></i>
                 </button>
             </div>
@@ -70,7 +71,10 @@ if(isset($_POST['btn_logout'])){
                 <td>@mdo</td>
                 <td>@mdo</td>
                 <td>
-                    <button class="btn-editar mx-3 border-0">
+                <button class="btn-detalles mx-2 border-0">
+                        <i class="bi bi-pencil-fill"></i>
+                    </button>
+                    <button class="btn-editar mx-2 border-0">
                         <i class="bi bi-pencil-fill"></i>
                     </button>
                     <button class="btn-delete border-0">
@@ -97,12 +101,12 @@ if(isset($_POST['btn_logout'])){
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Nuevo Producto</h5>
+                <h4 class="modal-title titulo-modalDetalles fw-bold" id="exampleModalLabel">Nuevo Producto</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             
             <div class="modal-body">
-                <form action="categoryController.php" method="post">
+                <form action="categoryController.php" method="post" class="formProductos">
                     <div class="row">
                         <div class="col-12 col-md-3">
                             <div class="form-group">
@@ -121,8 +125,6 @@ if(isset($_POST['btn_logout'])){
                             </div>
                         </div>
                     </div>
-                    
-
                     <div class="row mt-3 mb-3">
                         <div class="col-12 col-md-6">
                             <div class="form-group">
@@ -186,8 +188,8 @@ if(isset($_POST['btn_logout'])){
                 </div>
                 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-success">Guardar Cambios</button>
+                    <button type="button" class="btn btn-cancelarProductos" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-guardarProductos">Guardar Cambios</button>
                     </form>
                 </div>
             </div>

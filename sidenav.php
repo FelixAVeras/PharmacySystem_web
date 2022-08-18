@@ -1,7 +1,10 @@
 
 
 <div class="sidebar-custom border-end " id="sidebar-wrapper">
-    <div class="sidebar-heading border-bottom fw-bold fs-5">Pharmacy System</div>
+    <div class="sidebar-heading border-bottom fw-bold fs-5"> 
+         Pharmacy System
+         <i class="bi bi-heart-pulse-fill text-white-50"></i>
+        </div>
     <div class="list-custom list-group list-group-flush">
         <a class="list-group-item list-group-item-action list-group-item-light p-3 " href="dashboard.php">
         <i class="bi bi-house-door fs-5"></i>  

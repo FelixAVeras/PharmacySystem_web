@@ -16,8 +16,14 @@
                     User Name
                     </a>
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item text-center" href="#!">Mi perfil</a>
-                        <a class="dropdown-item text-center" href="#!">Configuración</a>
+                        <a class="dropdown-item text-center" href="#!">
+                        <i class="bi bi-person"></i>
+                            Mi perfil
+                        </a>
+                        <a class="dropdown-item text-center" href="#!">
+                        <i class="bi bi-gear-wide-connected"></i>
+                        Configuración
+                        </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#!">
                         <form method='post' action="">

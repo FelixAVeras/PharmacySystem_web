@@ -31,16 +31,16 @@ if(isset($_POST['btn_logout'])){
     <div id="page-content-wrapper">
         <?php include ("navbar.php"); ?>
         <div class="container-fluid">
-            <h1 class="text-center fw-bold mb-5 mt-5">
+            <h1 class="text-center fw-bold mb-3 mt-3">
                 Categorias
             </h1>
-            <button type="button" class="btn btnAgregar text-white mb-3" data-bs-toggle="modal" data-bs-target="#addCategoryModal">
+            <button type="button" class="btn btnAgregar text-white " data-bs-toggle="modal" data-bs-target="#addCategoryModal">
                 Agregar Nueva 
                 <i class="bi bi-plus-lg"></i>
             </button>
 
             <hr>
-            <div class="row mt-3 p-5 categorias">
+            <div class="row  p-3 categorias">
             <?php
             
             $query = "SELECT * FROM categoria";
@@ -52,9 +52,9 @@ if(isset($_POST['btn_logout'])){
 
             ?>
                     
-            <div class="col-sm-4 mb-3">
+            <div class="col-sm-3 mb-3">
                 <a class="text-decoration-none" href="">
-                <div class="card w-75">
+                <div class="card ">
                     <div class="card-body">
                         <h5 class="card-title text-center text-white">
                             <?php echo $row['categoryName']; ?>
@@ -80,13 +80,13 @@ if(isset($_POST['btn_logout'])){
             <div class="modal-dialog">
                 <div class="modal-content w-75">
                 <div class="modal-header text-center">
-                    <h5 class="modal-title titulo-modal ms-auto" id="exampleModalLabel">Nueva Categoria</h5>
+                    <h5 class="modal-title titulo-modal fw-bold" id="exampleModalLabel">Nueva Categoria</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form action="categoryController.php" method="post">
-                        <div class="form-group">
-                            <label for="categoryName" class="control-label mb-3 text-dark">Nombre Categoria</label>
+                        <div class="form-group formCategoria">
+                            <label for="categoryName" class="control-label mb-3">Nombre Categoria</label>
                             <input type="text" name="categoryName" class="form-control mb-3" id="categoryName">
                         </div>
                     </div>
