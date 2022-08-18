@@ -106,14 +106,14 @@ if(isset($_POST['btn_logout'])){
             </div>
             
             <div class="modal-body">
-                <form action="categoryController.php" method="post" class="formProductos">
+                <form action="" method="post" class="formProductos">
                     <div class="row">
                         <div class="col-12 col-md-3">
                             <div class="form-group">
                                 <label for="productCode" class="control-label">
                                     Código 
                                 </label>
-                                <input type="text" name="productCode" class="form-control" id="categoryName">
+                                <input type="text" name="productCode" class="form-control" id="productCode">
                             </div>
                         </div>
                         <div class="col-12 col-md-9">
@@ -121,7 +121,7 @@ if(isset($_POST['btn_logout'])){
                                 <label for="productName" class="control-label">
                                     Nombre del producto
                                 </label>
-                                <input type="text" name="productName" class="form-control" id="categoryName">
+                                <input type="text" name="productName" class="form-control" id="productName">
                             </div>
                         </div>
                     </div>
@@ -129,18 +129,18 @@ if(isset($_POST['btn_logout'])){
                         <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <label for="" class="control-label">Imagen del Producto</label>
-                                <input type="file" name="" id="" class="form-control">
+                                <input type="file" name="" id="fileInput" class="form-control" onchange="imagePreview(event)">
                             </div>
                         </div>
                         <div class="col-12 col-md-6">
-                            <p class="text-muted text-center"><em>Preview de la imagen</em></p>
+                            <img src="" alt="" id="preview" class="imagePrev">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="categoryName" class="control-label mt-3">Seleccione categoria</label>
+                        <label for="productCategory" class="control-label mt-3">Seleccione categoria</label>
 
-                        <select class="form-select" name="productCategory" aria-label="Default select example">
+                        <select class="form-select" name="productCategory" id="productCategory">
                             <option value="">--Seleccione categoria--</option>
                             <?php
                                $query = "SELECT * FROM categoria";
@@ -163,7 +163,7 @@ if(isset($_POST['btn_logout'])){
                     </div> 
                     
                     <div class="form-group mt-3">
-                        <label for="productDescription" class="control-label">Descripción</label>
+                        <label for="productDescription" class="control-label">Descripción (Opcional)</label>
                         <textarea name="productDescription" id="productDescription" class="form-control custom-textarea"></textarea>
                     </div>
 
@@ -173,7 +173,7 @@ if(isset($_POST['btn_logout'])){
                                 <label for="productPrice" class="control-label">
                                     Precio
                                 </label>
-                                <input type="text" name="productPrice" class="form-control" id="categoryName">
+                                <input type="text" name="productPrice" class="form-control" id="productPrice">
                             </div>
                         </div>
                         <div class="col-12 col-md-6">
@@ -181,15 +181,15 @@ if(isset($_POST['btn_logout'])){
                                 <label for="productStock" class="control-label">
                                     Existencia
                                 </label>
-                                <input type="text" name="productStock" class="form-control" id="categoryName">
+                                <input type="text" name="productStock" class="form-control" id="productStock">
                             </div>
                         </div>
                     </div>
                 </div>
                 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-cancelarProductos" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-guardarProductos">Guardar Cambios</button>
+                    <button type="button" class="btn btn-cancelarProductos" id="btnCancel" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-guardarProductos" id="btnSubmit">Guardar Cambios</button>
                     </form>
                 </div>
             </div>
@@ -227,6 +227,62 @@ if(isset($_POST['btn_logout'])){
 </div>
 
 <?php include ("footerLinks.php"); ?>
+
+<script type="text/javascript">
+function imagePreview(e) {
+    const reader = new FileReader();
+
+    reader.readAsDataURL(e.target.files[0]);
+    reader.onload = () => {
+        const preview = document.getElementById('preview');
+        preview.src = reader.result;
+    }
+}
+
+document.getElementById('btnSubmit').addEventListener('click', function(e) {
+    e.preventDefault();
+
+    let productCode = document.getElementById('productCode').value;
+    let productName = document.getElementById('productName').value;
+    let productCategory = document.getElementById('productCategory');
+    let productPrice = document.getElementById('productPrice').value;
+    let productStock = document.getElementById('productStock').value;
+
+    let modalAddProduct = document.getElementById('addCategoryModal');
+
+    
+    if (isNaN(productCode) || isNaN(productPrice) || isNaN(productStock)) {
+        alert('Este campo solo admite valores numericos.');
+        return false;
+    }
+    
+    if (productCode == '' || productCode == null || productCode.length == 0) {
+        alert('Debe asignar un codigo de producto.');
+        return false;
+    } 
+
+    if (productName == '' || productName == null || productName.length == 0) {
+        alert('El campo nombre de Producto esta vacio o es invalido.');
+        return false;
+    }
+    
+    if (productCategory.value == '' || productCategory.value == null) {
+        alert('Debe elegir una categoria para este producto');
+        return false;
+    }
+
+    if (productPrice == '' || productPrice == null || productPrice.length == 0) {
+        alert('Debe asignar precio de venta a este producto.');
+        return false;
+    }
+
+    if (productStock == '' || productStock == null || productStock.length == 0) {
+        alert('Debe asignar una cantidad en almacen');
+        return false;
+    } 
+});
+
+</script>
 
 </body>
 </html>
