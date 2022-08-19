@@ -65,11 +65,11 @@ if(isset($_POST['btn_logout'])){
                 while($row = $statement->fetch_array()) {
             ?>
             <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
+                <th scope="row"><?php echo $row['productCode']; ?></th>
+                <td><?php echo $row['productName']; ?></td>
+                <td><?php echo $row['productCategory']; ?></td>
+                <td><?php echo $row['productPrice']; ?></td>
+                <td><?php echo $row['productStock']; ?></td>
                 <td>
                 <button class="btn-detalles mx-2 border-0">
                         <i class="bi bi-pencil-fill"></i>
@@ -106,7 +106,7 @@ if(isset($_POST['btn_logout'])){
             </div>
             
             <div class="modal-body">
-                <form action="" method="post" class="formProductos">
+                <form action="" method="post" class="formProductos" name="formProductos">
                     <div class="row">
                         <div class="col-12 col-md-3">
                             <div class="form-group">
@@ -125,7 +125,7 @@ if(isset($_POST['btn_logout'])){
                             </div>
                         </div>
                     </div>
-                    <div class="row mt-3 mb-3">
+                    <!-- <div class="row mt-3 mb-3">
                         <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <label for="" class="control-label">Imagen del Producto</label>
@@ -135,7 +135,7 @@ if(isset($_POST['btn_logout'])){
                         <div class="col-12 col-md-6">
                             <img src="" alt="" id="preview" class="imagePrev">
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="form-group">
                         <label for="productCategory" class="control-label mt-3">Seleccione categoria</label>
@@ -229,6 +229,8 @@ if(isset($_POST['btn_logout'])){
 <?php include ("footerLinks.php"); ?>
 
 <script type="text/javascript">
+var myModal = new bootstrap.Modal(document.getElementById('addCategoryModal'));
+
 function imagePreview(e) {
     const reader = new FileReader();
 
@@ -249,7 +251,6 @@ document.getElementById('btnSubmit').addEventListener('click', function(e) {
     let productStock = document.getElementById('productStock').value;
 
     let modalAddProduct = document.getElementById('addCategoryModal');
-
     
     if (isNaN(productCode) || isNaN(productPrice) || isNaN(productStock)) {
         alert('Este campo solo admite valores numericos.');
@@ -279,7 +280,20 @@ document.getElementById('btnSubmit').addEventListener('click', function(e) {
     if (productStock == '' || productStock == null || productStock.length == 0) {
         alert('Debe asignar una cantidad en almacen');
         return false;
-    } 
+    }
+
+    var http = new XMLHttpRequest();
+    var urlApi = 'productosController.php';
+
+    let formData = new FormData(document.forms.formProductos);
+    
+    http.open('POST', urlApi);
+    http.send(formData);
+    
+    document.location.reload();
+
+    myModal.hide();
+
 });
 
 </script>

@@ -113,7 +113,8 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`idusuario`, `idnivel`, `nombre`, `apellidos`, `email`, `password`, `fecha_creacion`, `fecha_comunicacion`, `perfil`, `username`) VALUES
-(1, 4, 'Felix', 'Veras', 'fcarvajal44@gmail.com', 'test1234;', '2022-08-07 13:25:45', '2021-03-15 17:03:45', '', 'felix');
+(1, 4, 'Felix', 'Veras', 'fcarvajal44@gmail.com', 'test1234;', '2022-08-07 13:25:45', '2021-03-15 17:03:45', '', 'felix'),
+(2, 4, 'Isargenys', 'Contreras', 'isargenys@gmail.com', '123456', '2022-08-07 13:25:45', '2021-03-15 17:03:45', '', 'isargenys');
 
 --
 -- Indexes for dumped tables
