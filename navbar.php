@@ -1,7 +1,6 @@
-<?php include ("headerLinks.php"); ?>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/custom.css">
 
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/custom.css">
 
 <nav class="navbar navbar-expand-lg navbar-light  border-bottom">
     <div class="container-fluid">
@@ -13,7 +12,7 @@
                 <li class="nav-item dropdown navTitulo">
                     <a class="nav-link dropdown-toggle fw-bold " id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="bi bi-person-workspace"></i> 
-                    User Name
+                     &nbsp; <?php //$_SESSION["username"]; ?>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item text-center" href="#!">
@@ -25,11 +24,7 @@
                         Configuración
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#!">
-                        <form method='post' action="">
-                        <input class=" border-0 bg-body" type="submit" value="Cerrar Sesion" name="btn_logout">
-                    </form>  
-                        </a>
+                        <a class="dropdown-item" href="logout.php">Cerrar Sesion</a>
                     </div>
                 </li>
             </ul>

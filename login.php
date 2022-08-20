@@ -1,9 +1,13 @@
 <?php
 
-require_once 'config/connection.php';
+session_start();
+
+if (isset($_SESSION["username"])) { 
+	header("location: dashboard.php"); 
+	exit(); 
+}
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -47,7 +51,7 @@ require_once 'config/connection.php';
 								</div>
 							</div>
 							<div class="mt-4 mb-3 d-flex justify-content-center gap-2">
-								<button type="submit" id="btnSubmit" class="btn btn-iniciar w-75 border-3">Iniciar</button>
+								<button type="button" id="btnSubmit" class="btn btn-iniciar w-75 border-3">Iniciar</button>
 							</div>
 						</form>
 					</div>
@@ -59,6 +63,6 @@ require_once 'config/connection.php';
 	</div>
 
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script src="js/auth.js"></script>
+	<script src="./js/auth.js"></script>
 </body>
 </html>

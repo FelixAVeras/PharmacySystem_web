@@ -1,25 +1,25 @@
 <?php
 
-include 'config/connection.php';
+session_start();
 
-if (isset($_POST['username']) && isset($_POST['password'])) {
-	$username = mysqli_real_escape_string($connection, $_POST['username']);
-	$password = mysqli_real_escape_string($connection, $_POST['password']);
+include('config/connection.php');
 
-	$userData = array();
+if (isset($_POST["username"]) && isset($_POST["password"])) {
+ 	$username = mysqli_real_escape_string($connect, $_POST["username"]);
+ 	$password = md5(mysqli_real_escape_string($connect, $_POST["password"]));
+ 	
+	$sql = "SELECT * FROM usuario WHERE username = '".$username."' AND password = '".$password."'";
+ 	
+	$result = mysqli_query($connect, $sql);
+ 	$num_row = mysqli_num_rows($result);
+ 	
+	if ($num_row > 0) {
+  		$data = mysqli_fetch_array($result);
+  		$_SESSION["username"] = $data["username"];
+  		
+		echo $data["username"];
+ 	}
 
-	if ($username != '' && $password != '') {
-		$sqlQuery = "SELECT * FROM usuario WHERE username='".$username."' and password='".$password."'";
-		$result = mysqli_query($connection, $sqlQuery);
-		$userData = mysqli_fetch_array($result);
-
-		if (!empty($userData)) {
-			$_SESSION['username'] = $username;
-			echo 'validUser';
-		} else {
-			echo 'invalidUser';
-		}
-	}
 }
 
 ?>

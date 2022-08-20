@@ -1,24 +1,28 @@
-$('#login-form').submit(function(e) {
-	e.preventDefault();
-	var response;
+$(document).ready(function() {
+	$('#btnSubmit').click(function() {
+		debugger;
 
-	var username = $('#username').val().trim();
-	var password = $('#password').val().trim();
-
-	if (username != '' && password != '') {
-		$.ajax({
-			url: './logincontroller.php',
-			type: 'POST',
-			data: { username: username, password: password },
-			success: function(response) {
-				if (response == 'validUser') {
-					document.location = 'dashboard.php';
-				} else {
-					alert('los datos introducidos son incorrectos');
-				}
-			}
-		});
-	} else {
-		document.location = 'login.php';
-	}
+	 	var username = $('#username').val();
+	 	var password = $('#password').val();
+	 
+		if($.trim(username).length > 0 && $.trim(password).length > 0) {
+	  		$.ajax({
+				url: "logincontroller.php",
+				method: "POST",
+				data: { username:username, password:password },
+				cache: false,
+	   			beforeSend: function(){
+					$('#btnSubmit').val("Ingresando...");
+	   			},
+	   			success:function(data) {
+					if(data) {
+						location.href = 'dashboard.php'
+		 				//$("body").load("dashboard.php").hide().fadeIn(1500);
+					} else {
+						
+					}
+	   			}
+	  		});
+	 	} else {}
+	});
 });

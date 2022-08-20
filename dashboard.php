@@ -1,15 +1,15 @@
 <?php
-include "config/connection.php";
 
-if(!isset($_SESSION['username']) && !empty($_SESSION['username'])){    
+session_start();
+
+if (!isset($_SESSION['username']) && !empty($_SESSION['username'])) {    
     header('Location: login.php');
 }
 
-if(isset($_POST['btn_logout'])){
-    session_destroy();
-    header('Location: login.php');
-}
+include_once "config/connection.php";
+
 ?>
+
 <?php
 include ("headerLinks.php"); 
 ?>
