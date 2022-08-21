@@ -1,5 +1,3 @@
-//var myModal = new bootstrap.Modal(document.getElementById('addCategoryModal'));
-
 function imagePreview(e) {
     const reader = new FileReader();
 
@@ -57,50 +55,45 @@ document.getElementById('btnSubmit').addEventListener('click', function(e) {
     http.open('POST', urlApi);
     http.send(formData);
     
-    document.location.reload();
-
-    //myModal.hide();
-
+    window.location.reload();
 });
 
+
 function editProduct() {
-    // $('#hidden_product_id').val(id);
-
-    // var http = new XMLHttpRequest();
-    // var urlApi = 'detalleproducto.php';
-
-    // http.open('GET', urlApi);
-
-    // http.onload = function() {
-    //   console.log(http.response);
-    // };
-
-            // $('#productCode').val(product.productCode);
-            // $('#productName').val(product.productName);
-            // $('#productCategory').val(product.productCategory);
-            // $('#productPrice').val(product.productPrice);
-            // $('#productStock').val(product.productStock);
-
     $("#editProductModal").modal("show");
 }
 
-function detailProduct() {
-    // $('#hidden_product_id').val(id);
+function detailProduct(id) {
+    console.log('hice click');
 
-    // var http = new XMLHttpRequest();
-    // var urlApi = 'detalleproducto.php';
+    const request = new XMLHttpRequest();
+    request.open('GET', `detalleproducto.php?=${id}`);
+    request.responseType = 'json';
+    request.onload = () => {
+        const data = request.response 
+        console.log(data);
+    };
+    
+    request.send();
+}
 
-    // http.open('GET', urlApi);
+deleteProduct();
 
-    // http.onload = function() {
-    //   console.log(http.response);
-    // };
+function deleteProduct() {
+    $(document).delegate('#btnDelete', 'click', function() {
+        //debugger;
 
-            // $('#productCode').val(product.productCode);
-            // $('#productName').val(product.productName);
-            // $('#productCategory').val(product.productCategory);
-            // $('#productPrice').val(product.productPrice);
-            // $('#productStock').val(product.productStock);
-
-    $("#modalProductDetalles").modal("show");
+        if (confirm("Esta seguro que desea eliminar este producto?")) {
+            let productId = $(this).attr('data-id');
+            
+            $.ajax({
+                type: 'GET',
+                url: 'deleteproducto.php',
+                data: { idProducto: productId },
+                success: function() {
+                    window.location.reload();
+                }
+            });
+        }
+    });
 }

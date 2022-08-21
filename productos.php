@@ -71,17 +71,17 @@ if(isset($_POST['btn_logout'])){
                 <th scope="row"><?php echo $row['productCode']; ?></th>
                 <td><?php echo $row['productName']; ?></td>
                 <td><?php echo $row['categoryName']; ?></td>
-                <td><?php echo $row['productPrice']; ?></td>
+                <td>$<?php echo $row['productPrice']; ?></td>
                 <td><?php echo $row['productStock']; ?></td>
                 <td>
                     
-                    <button onclick="detailProduct()" class="btn-detalles mx-2 border-0">
+                    <button onclick="detailProduct(<?php echo $row['idProducto']; ?>)" class="btn-detalles mx-2 border-0">
                         <i class="bi bi-eye-fill"></i>
                     </button>
-                    <button onclick="editProduct()" class="btn-editar mx-2 border-0">
+                    <button onclick="editProduct(<?php echo $row['idProducto']; ?>)" class="btn-editar mx-2 border-0">
                         <i class="bi bi-pencil-fill"></i>
                     </button>
-                    <button class="btn-delete border-0">
+                    <button id="btnDelete" data-id="<?php echo $row['idProducto']; ?>" class="btn-delete border-0">
                         <i class="bi bi-trash3"></i>
                     </button>
                 </td>

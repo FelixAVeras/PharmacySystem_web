@@ -19,7 +19,7 @@
                         <i class="bi bi-person"></i>
                             Mi perfil
                         </a>
-                        <a class="dropdown-item text-center" href="#!">
+                        <a class="dropdown-item text-center" href="settings.php">
                         <i class="bi bi-gear-wide-connected"></i>
                         Configuración
                         </a>
