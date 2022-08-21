@@ -27,7 +27,7 @@
         <div class="collapse" id="collapseTienda">
             <div class="list-group">
             <a href="" class="list-group-item list-group-item-action">Ventas</a>
-            <a href="" class="list-group-item list-group-item-action">Punto de Ventas</a>
+            <a href="puntoVenta.php" class="list-group-item list-group-item-action">Punto de Ventas</a>
             </div>
         </div>
         <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">
