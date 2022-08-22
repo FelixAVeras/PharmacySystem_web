@@ -89,10 +89,12 @@
             
         </form>
       </div>
+      
       <div class="modal-footer">
         <button type="button" class="btn btn-cancelarProductos" id="btnCancel" data-bs-dismiss="modal">Cancelar</button>
         <button type="button" class="btn btn-guardarProductos" id="btnSubmit">Guardar Cambios</button>
       </div>
+
     </div>
   </div>
 </div>

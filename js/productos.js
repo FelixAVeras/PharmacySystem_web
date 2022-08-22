@@ -58,31 +58,70 @@ document.getElementById('btnSubmit').addEventListener('click', function(e) {
     window.location.reload();
 });
 
-
-function editProduct() {
-    $("#editProductModal").modal("show");
-}
+detailProduct();
 
 function detailProduct(id) {
-    console.log('hice click');
+    $(document).delegate('#btnDetail', 'click', function() {
+		let productId = $(this).attr('data-id');
+        
+        $.ajax({
+            type: "GET", //we are using GET method to get data from server side
+            url: 'detalleproducto.php', // get the route value
+            data: { idProducto: productId  }, //set data
+            success: function (response) {//once the request successfully process to the server side it will return result here
+                response = JSON.parse(response);
+                // $("#edit-form [name=\"id\"]").val(response.id);
+                // $("#edit-form [name=\"email\"]").val(response.email);
+                // $("#edit-form [name=\"first_name\"]").val(response.first_name);
+                // $("#edit-form [name=\"last_name\"]").val(response.last_name);
+                // $("#edit-form [name=\"address\"]").val(response.address);
 
-    const request = new XMLHttpRequest();
-    request.open('GET', `detalleproducto.php?=${id}`);
-    request.responseType = 'json';
-    request.onload = () => {
-        const data = request.response 
-        console.log(data);
-    };
-    
-    request.send();
+                $('#productCode').val(response.productCode);
+                $('#productName').val(response.productName);
+                $('#productCategory').val(response.productCategory);
+                $('#productPrice').val(response.productPrice);
+                $('#productStock').val(response.productStock);
+
+            }
+        });
+    });
+}
+
+editProduct();
+
+function editProduct() {
+    $(document).delegate('#btnUpdate', 'click', function() {
+        let productId = $(this).attr('data-id');
+
+        $.ajax({
+            type: "GET", //we are using GET method to get data from server side
+            url: 'detalleproducto.php', // get the route value
+            data: { idProducto: productId  }, //set data
+            success: function (response) {//once the request successfully process to the server side it will return result here
+                response = JSON.parse(response);
+                // $("#edit-form [name=\"id\"]").val(response.id);
+                // $("#edit-form [name=\"email\"]").val(response.email);
+                // $("#edit-form [name=\"first_name\"]").val(response.first_name);
+                // $("#edit-form [name=\"last_name\"]").val(response.last_name);
+                // $("#edit-form [name=\"address\"]").val(response.address);
+
+                $('#productCode').val(response.productCode);
+                $('#productName').val(response.productName);
+                $('#productCategory').val(response.productCategory);
+                $('#productPrice').val(response.productPrice);
+                $('#productStock').val(response.productStock);
+
+            }
+        });
+        
+        $("#editProductModal").modal("show");
+    });
 }
 
 deleteProduct();
 
 function deleteProduct() {
     $(document).delegate('#btnDelete', 'click', function() {
-        //debugger;
-
         if (confirm("Esta seguro que desea eliminar este producto?")) {
             let productId = $(this).attr('data-id');
             

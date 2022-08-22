@@ -42,11 +42,13 @@ if(isset($_POST['btn_logout'])){
             </div>
 
             <?php 
+            setlocale(LC_MONETARY, 'en-us');
 
             $query = "SELECT *, categoria.categoryName
                       FROM producto 
                       INNER JOIN categoria 
-                      ON producto.productCategory = categoria.idCategoria";
+                      ON producto.productCategory = categoria.idCategoria
+                      ORDER BY productCode ASC";
 
             $statement = $connection->query($query);
 
@@ -71,14 +73,14 @@ if(isset($_POST['btn_logout'])){
                 <th scope="row"><?php echo $row['productCode']; ?></th>
                 <td><?php echo $row['productName']; ?></td>
                 <td><?php echo $row['categoryName']; ?></td>
-                <td>$<?php echo $row['productPrice']; ?></td>
+                <td>$<?php echo number_format($row['productPrice'], 2); ?></td>
                 <td><?php echo $row['productStock']; ?></td>
                 <td>
                     
-                    <button onclick="detailProduct(<?php echo $row['idProducto']; ?>)" class="btn-detalles mx-2 border-0">
+                    <button id="btnDetails" data-id="<?php echo $row['idProducto']; ?>" class="btn-detalles mx-2 border-0">
                         <i class="bi bi-eye-fill"></i>
                     </button>
-                    <button onclick="editProduct(<?php echo $row['idProducto']; ?>)" class="btn-editar mx-2 border-0">
+                    <button id="btnUpdate" data-id="<?php echo $row['idProducto']; ?>" class="btn-editar mx-2 border-0">
                         <i class="bi bi-pencil-fill"></i>
                     </button>
                     <button id="btnDelete" data-id="<?php echo $row['idProducto']; ?>" class="btn-delete border-0">
