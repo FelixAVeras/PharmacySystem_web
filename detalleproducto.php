@@ -1,57 +1,75 @@
 <?php
 
+include('config/connection.php');
 
-// $productName = trim($_POST['productName']);
-// $productDescription = trim($_POST['productDescription']);
-// $productCode = trim($_POST['productCode']);
-// $productCategory = trim($_POST['productCategory']);
-// $productPrice = trim($_POST['productPrice']);
-// $productId = trim($_POST['idProducto']);
+$request = $_REQUEST;
+$idProducto = $request['idProducto'];
 
-// var_dump($productId);
+$query = "SELECT *, categoria.categoryName
+          FROM producto 
+          INNER JOIN categoria 
+          ON producto.productCategory = categoria.idCategoria
+          WHERE producto.idProducto ='".$idProducto."'";
+	
+$results = $connection->query($query);
+$row = $results->fetch_assoc();
+$results->free_result();
 
-// $query = "SELECT *, categoria.categoryName
-// FROM producto 
-// INNER JOIN categoria 
-// ON producto.productCategory = categoria.idCategoria
-// WHERE producto.idProducto = $productId";
+echo json_encode($row);
 
-// if ($connection->query($query)) { 
-//   echo "Funciona";
-// } else {
-//   echo "Oops! Something went wrong. Please try again later.";
-// }
+function UpdateProduct() {
+  $request = $_REQUEST;
+	$id = $request['id'];
+	$email = $request['email'];
+	$first_name = $request['first_name'];
+	$last_name = $request['last_name'];
+	$address = $request['address'];
 
-if (isset($_GET['idProducto'])) {
-  require_once "./config/connection.php";
+	$query = "UPDATE producto 
+            SET email='".$email."', 
+            first_name='".$first_name."', 
+            last_name='".$last_name."', 
+            address='".$address."' 
+            WHERE id='".$id."'";
 
-  $query = "SELECT *, categoria.categoryName
-            FROM producto 
-            INNER JOIN categoria 
-            ON producto.productCategory = categoria.idCategoria
-            WHERE producto.idProducto = ?";
-
-  if ($stmt = $connection->prepare($query)) {
-    $stmt->bind_param("i", $param_id);
-    $param_id = trim($_GET["idProducto"]);
-
-    if ($stmt->execute()) {
-      if ($result->num_rows == 1) {
-        $row = $result->fetch_array(MYSQLI_ASSOC);
-        $name = $row["productName"];
-      } else {
-        exit();
-      }
-    } else {
-      echo "Oops! Something went wrong. Please try again later.";
-    }
-  }
-
-  $stmt->close();
-  $connection->close();
-} else {
-  echo "Something wrong.";
-  exit();
+	if ($connection->query($query)) {
+	  echo "Employee has been sucessfully updated.";
+	} else {
+	  return "Error: " . $query . "<br>" . $connection->error;
+	}
 }
+
+// if (isset($_GET['idProducto'])) {
+//   require_once "./config/connection.php";
+
+//   $query = "SELECT *, categoria.categoryName
+//             FROM producto 
+//             INNER JOIN categoria 
+//             ON producto.productCategory = categoria.idCategoria
+//             WHERE producto.idProducto = '.$param_id.'";
+
+//   if ($stmt = $connection->prepare($query)) {
+//     $stmt->bind_param("i", $param_id);
+//     $param_id = trim($_GET["idProducto"]);
+
+//     if ($stmt->execute()) {
+//       if ($stmt->num_rows == 1) {
+//         $row = $result->fetch_array(MYSQLI_ASSOC);
+//         json_encode($row);
+//         $name = $row["productName"];
+//       } else {
+//         exit();
+//       }
+//     } else {
+//       echo "Oops! Something went wrong. Please try again later.";
+//     }
+//   }
+
+//   $stmt->close();
+//   $connection->close();
+// } else {
+//   echo "Something wrong.";
+//   exit();
+// }
 
 ?>

@@ -105,14 +105,18 @@ function editProduct() {
                 // $("#edit-form [name=\"last_name\"]").val(response.last_name);
                 // $("#edit-form [name=\"address\"]").val(response.address);
 
-                $('#productCode').val(response.productCode);
-                $('#productName').val(response.productName);
-                $('#productCategory').val(response.productCategory);
-                $('#productPrice').val(response.productPrice);
-                $('#productStock').val(response.productStock);
-
+                console.log(response);
+                
+                $('#formProductosEdit #productCode').val(response.productCode);
+                $('#formProductosEdit #productName').val(response.productName);
+                $('#formProductosEdit #productCategory').val(response.productCategory);
+                $('#formProductosEdit #productDescription').val(response.productDescription);
+                $('#formProductosEdit #productPrice').val(response.productPrice);
+                $('#formProductosEdit #productStock').val(response.productStock);
+                
             }
         });
+
         
         $("#editProductModal").modal("show");
     });

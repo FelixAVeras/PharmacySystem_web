@@ -7,7 +7,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form method="post" class="formProductos" name="formProductos">
+        <form method="post" class="formProductos" name="formProductosEdit" id="formProductosEdit">
             <div class="row">
                 <div class="col-12 col-md-3">
                     <div class="form-group">
