@@ -11,6 +11,8 @@ function imagePreview(e) {
 document.getElementById('btnSubmit').addEventListener('click', function(e) {
     e.preventDefault();
 
+    debugger;
+
     let productCode = document.getElementById('productCode').value;
     let productName = document.getElementById('productName').value;
     let productCategory = document.getElementById('productCategory');
@@ -60,32 +62,28 @@ document.getElementById('btnSubmit').addEventListener('click', function(e) {
 
 detailProduct();
 
-function detailProduct(id) {
-    $(document).delegate('#btnDetail', 'click', function() {
-		let productId = $(this).attr('data-id');
-        
+function detailProduct() {
+    $(document).delegate('#btnDetails', 'click', function() {
+        let productId = $(this).attr('data-id');
+
         $.ajax({
             type: "GET", //we are using GET method to get data from server side
             url: 'detalleproducto.php', // get the route value
             data: { idProducto: productId  }, //set data
             success: function (response) {//once the request successfully process to the server side it will return result here
                 response = JSON.parse(response);
-                // $("#edit-form [name=\"id\"]").val(response.id);
-                // $("#edit-form [name=\"email\"]").val(response.email);
-                // $("#edit-form [name=\"first_name\"]").val(response.first_name);
-                // $("#edit-form [name=\"last_name\"]").val(response.last_name);
-                // $("#edit-form [name=\"address\"]").val(response.address);
-
-                $('#productCode').val(response.productCode);
-                $('#productName').val(response.productName);
-                $('#productCategory').val(response.productCategory);
-                $('#productPrice').val(response.productPrice);
-                $('#productStock').val(response.productStock);
-
+                
+                $('#modalInfo #productName').val(response.productName);
+                $('#modalInfo #productCategory').val(response.productCategory);
+                $('#modalInfo #productDescription').val(response.productDescription);
+                $('#modalInfo #productPrice').val(response.productPrice);
             }
         });
+
+        $("#modalProductDetalles").modal("show");
     });
 }
+
 
 editProduct();
 
@@ -99,21 +97,15 @@ function editProduct() {
             data: { idProducto: productId  }, //set data
             success: function (response) {//once the request successfully process to the server side it will return result here
                 response = JSON.parse(response);
-                // $("#edit-form [name=\"id\"]").val(response.id);
-                // $("#edit-form [name=\"email\"]").val(response.email);
-                // $("#edit-form [name=\"first_name\"]").val(response.first_name);
-                // $("#edit-form [name=\"last_name\"]").val(response.last_name);
-                // $("#edit-form [name=\"address\"]").val(response.address);
-
-                console.log(response);
                 
+                console.log(productId);
+                $('#formProductosEdit #idProducto').val(productId);
                 $('#formProductosEdit #productCode').val(response.productCode);
                 $('#formProductosEdit #productName').val(response.productName);
                 $('#formProductosEdit #productCategory').val(response.productCategory);
                 $('#formProductosEdit #productDescription').val(response.productDescription);
                 $('#formProductosEdit #productPrice').val(response.productPrice);
                 $('#formProductosEdit #productStock').val(response.productStock);
-                
             }
         });
 
@@ -121,6 +113,66 @@ function editProduct() {
         $("#editProductModal").modal("show");
     });
 }
+
+
+
+    
+$("#btnUpdateSubmit").on("click", function() {
+    // var $this = $(this);
+    // var id = $('#formProductosEdit input#idProducto').attr("id");  
+    // var $caption = $this.html();
+    var form = "#formProductosEdit";
+    var formData = $(form).serializeArray();
+
+    // let productId = $(this).attr('data-id');
+
+    // console.log(id);
+    // console.log(productId);
+
+    // $.ajax({
+    //     type: "POST",
+    //     url: 'actualizarproducto.php',
+    //     data: {idProducto: productId, formData},
+    //     beforeSend: function () {
+    //         $this.attr('disabled', true).html("Processing...");
+    //     },
+    //     success: function (response) {
+    //         $('#idProducto').val(id); 
+    //         $this.attr('disabled', false).html($caption);
+            
+    //         alert(response);
+    //         window.location.reload();
+    //     }
+    // });
+
+    $('#formProductosEdit #idProducto').val();
+    $('#formProductosEdit #productCode').val();
+    $('#formProductosEdit #productName').val();
+    $('#formProductosEdit #productCategory').val();
+    $('#formProductosEdit #productDescription').val();
+    $('#formProductosEdit #productPrice').val();
+    $('#formProductosEdit #productStock').val();
+
+    $.ajax({
+        url: 'actualizarproducto.php',
+        method: 'POST',
+        data: {
+            formData
+            //$('#formProductosEdit #idProducto').val(productId);
+            // productCode: productCode,
+            // productName: productName,
+            // productCategory: productCategory,
+            // productDescription: productDescription,
+            // productPrice: productPrice,
+            // productStock: productStock
+        },
+        success: function(response) {
+            alert(response);
+            window.location.href = 'productos.php';
+        }
+   });
+});
+
 
 deleteProduct();
 

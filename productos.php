@@ -1,5 +1,5 @@
 <?php
-include "config/connection.php";
+include("config/connection.php");
 
 if(!isset($_SESSION['username']) && !empty($_SESSION['username'])){    
     header('Location: login.php');
@@ -77,10 +77,10 @@ if(isset($_POST['btn_logout'])){
                 <td><?php echo $row['productStock']; ?></td>
                 <td>
                     
-                    <button id="btnDetails" data-id="<?php echo $row['idProducto']; ?>" class="btn-detalles mx-2 border-0">
+                    <button id="btnDetails" data-id="<?php echo $row['idProducto']; ?>" class="btn-detalles mx-2 border-0" disabled>
                         <i class="bi bi-eye-fill"></i>
                     </button>
-                    <button id="btnUpdate" data-id="<?php echo $row['idProducto']; ?>" class="btn-editar mx-2 border-0">
+                    <button id="btnUpdate" data-id="<?php echo $row['idProducto']; ?>" class="btn-editar mx-2 border-0" disabled>
                         <i class="bi bi-pencil-fill"></i>
                     </button>
                     <button id="btnDelete" data-id="<?php echo $row['idProducto']; ?>" class="btn-delete border-0">

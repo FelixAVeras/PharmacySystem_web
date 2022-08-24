@@ -1,3 +1,4 @@
+<?php require_once "./config/connection.php"; ?>
 
 <div class="modal fade" id="editProductModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -8,13 +9,14 @@
       </div>
       <div class="modal-body">
         <form method="post" class="formProductos" name="formProductosEdit" id="formProductosEdit">
+            <input class="form-control" type="hidden" name="idProducto" id="idProducto">
             <div class="row">
                 <div class="col-12 col-md-3">
                     <div class="form-group">
                         <label for="productCode" class="control-label">
                             Código 
                         </label>
-                        <input type="text" name="productCode" class="form-control" id="productCode">
+                        <input type="text" readonly name="productCode" class="form-control" id="productCode">
                     </div>
                 </div>
                 <div class="col-12 col-md-9">
@@ -92,7 +94,7 @@
       
       <div class="modal-footer">
         <button type="button" class="btn btn-cancelarProductos" id="btnCancel" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-guardarProductos" id="btnSubmit">Guardar Cambios</button>
+        <button type="button" class="btn btn-guardarProductos" id="btnUpdateSubmit">Guardar Cambios</button>
       </div>
 
     </div>
