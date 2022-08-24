@@ -8,6 +8,15 @@
   color: #fff;
 }
 
+.list-custom a:hover{
+  background-color: #8a0d2a !important;
+  color: #fff !important; 
+}
+
+.list-group a.submenu{
+  background-color: #8a0d2a;
+}
+
 .categorias .card {
   background-color: #ffb914;
 }
