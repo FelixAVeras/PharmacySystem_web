@@ -80,7 +80,7 @@ if(isset($_POST['btn_logout'])){
                     <button id="btnDetails" data-id="<?php echo $row['idProducto']; ?>" class="btn-detalles mx-2 border-0" disabled>
                         <i class="bi bi-eye-fill"></i>
                     </button>
-                    <button id="btnUpdate" data-id="<?php echo $row['idProducto']; ?>" class="btn-editar mx-2 border-0" disabled>
+                    <button id="btnUpdate" data-id="<?php echo $row['idProducto']; ?>" class="btn-editar mx-2 border-0">
                         <i class="bi bi-pencil-fill"></i>
                     </button>
                     <button id="btnDelete" data-id="<?php echo $row['idProducto']; ?>" class="btn-delete border-0">

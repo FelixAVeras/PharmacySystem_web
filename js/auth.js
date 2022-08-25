@@ -17,9 +17,8 @@ $(document).ready(function() {
 	   			success:function(data) {
 					if(data) {
 						location.href = 'dashboard.php'
-		 				//$("body").load("dashboard.php").hide().fadeIn(1500);
-					} else {
-						
+		 			} else {
+							
 					}
 	   			}
 	  		});

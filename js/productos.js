@@ -8,56 +8,74 @@ function imagePreview(e) {
     }
 }
 
-document.getElementById('btnSubmit').addEventListener('click', function(e) {
-    e.preventDefault();
+$('#btnAdd').click(function() {
+    let productAddForm = $('#formProductos').serialize();
+
+    // let productCode = document.getElementById('productCode').value;
+    // let productName = document.getElementsByName('productName').value;
+    // let productCategory = document.getElementById('productCategory').value;
+    // let productPrice = document.getElementsByName('productPrice').value;
+    // let productStock = document.getElementById('productStock').value;
 
     debugger;
 
-    let productCode = document.getElementById('productCode').value;
-    let productName = document.getElementById('productName').value;
-    let productCategory = document.getElementById('productCategory');
-    let productPrice = document.getElementById('productPrice').value;
-    let productStock = document.getElementById('productStock').value;
-
-    if (isNaN(productCode) || isNaN(productPrice) || isNaN(productStock)) {
-        alert('Este campo solo admite valores numericos.');
-        return false;
-    }
+    // if (isNaN(productCode)) {
+    //     alert('Este campo "CODIGO" solo admite valores numericos.');
+    //     return false;
+    // }
     
-    if (productCode == '' || productCode == null || productCode.length == 0) {
-        alert('Debe asignar un codigo de producto.');
-        return false;
-    } 
-
-    if (productName == '' || productName == null || productName.length == 0) {
-        alert('El campo nombre de Producto esta vacio o es invalido.');
-        return false;
-    }
+    // if (isNaN(productPrice)) {
+    //     alert('Este campo "PRECIO" solo admite valores numericos.');
+    //     return false;
+    // }
     
-    if (productCategory.value == '' || productCategory.value == null) {
-        alert('Debe elegir una categoria para este producto');
-        return false;
-    }
-
-    if (productPrice == '' || productPrice == null || productPrice.length == 0) {
-        alert('Debe asignar precio de venta a este producto.');
-        return false;
-    }
-
-    if (productStock == '' || productStock == null || productStock.length == 0) {
-        alert('Debe asignar una cantidad en almacen');
-        return false;
-    }
-
-    var http = new XMLHttpRequest();
-    var urlApi = 'productosController.php';
-
-    let formData = new FormData(document.forms.formProductos);
+    // if (isNaN(productStock)) {
+    //     alert('Este campo "EXISTENCIA" solo admite valores numericos.');
+    //     return false;
+    // }
     
-    http.open('POST', urlApi);
-    http.send(formData);
+    // if (productCode == '' || productCode == null || productCode.length == 0) {
+    //     alert('Debe asignar un codigo de producto.');
+    //     return false;
+    // } 
+
+    // if (productName == '' || productName == null || productName.length == 0) {
+    //     alert('El campo nombre de Producto esta vacio o es invalido.');
+    //     return false;
+    // }
     
-    window.location.reload();
+    // if (productCategory.value == '' || productCategory.value == null) {
+    //     alert('Debe elegir una categoria para este producto');
+    //     return false;
+    // }
+
+    // if (productPrice == '' || productPrice == null || productPrice.length == 0) {
+    //     alert('Debe asignar precio de venta a este producto.');
+    //     return false;
+    // }
+
+    // if (productStock == '' || productStock == null || productStock.length == 0) {
+    //     alert('Debe asignar una cantidad en almacen');
+    //     return false;
+    // }
+    
+    $.ajax({
+        data: productAddForm,
+        type: 'post',
+        url: 'addProduct.php',
+        success: function(response) {
+            let dataResult = JSON.parse(response);
+
+            if (dataResult.statusCode == 200) {
+                //$('#addProductModal').modal('hide');
+                //alert('Producto Agregado exitosamente!!!');
+
+                location.reload();
+            } else {
+                alert(response);
+            }
+        }
+    })
 });
 
 detailProduct();
@@ -85,9 +103,9 @@ function detailProduct() {
 }
 
 
-editProduct();
+//editProduct();
 
-function editProduct() {
+//function editProduct() {
     $(document).delegate('#btnUpdate', 'click', function() {
         let productId = $(this).attr('data-id');
 
@@ -112,7 +130,7 @@ function editProduct() {
         
         $("#editProductModal").modal("show");
     });
-}
+//}
 
 
 
@@ -121,8 +139,8 @@ $("#btnUpdateSubmit").on("click", function() {
     // var $this = $(this);
     // var id = $('#formProductosEdit input#idProducto').attr("id");  
     // var $caption = $this.html();
-    var form = "#formProductosEdit";
-    var formData = $(form).serializeArray();
+    // var form = "#formProductosEdit";
+    // var formData = $(form).serializeArray();
 
     // let productId = $(this).attr('data-id');
 
@@ -153,24 +171,43 @@ $("#btnUpdateSubmit").on("click", function() {
     $('#formProductosEdit #productPrice').val();
     $('#formProductosEdit #productStock').val();
 
+//     $.ajax({
+//         url: 'actualizarproducto.php',
+//         method: 'POST',
+//         data: {
+//             formData
+//             //$('#formProductosEdit #idProducto').val(productId);
+//             // productCode: productCode,
+//             // productName: productName,
+//             // productCategory: productCategory,
+//             // productDescription: productDescription,
+//             // productPrice: productPrice,
+//             // productStock: productStock
+//         },
+//         success: function(response) {
+//             alert(response);
+//             window.location.href = 'productos.php';
+//         }
+//    });
+
+    var formData = $("#formProductosEdit").serialize();
+
     $.ajax({
+        data: formData,
+        type: "post",
         url: 'actualizarproducto.php',
-        method: 'POST',
-        data: {
-            formData
-            //$('#formProductosEdit #idProducto').val(productId);
-            // productCode: productCode,
-            // productName: productName,
-            // productCategory: productCategory,
-            // productDescription: productDescription,
-            // productPrice: productPrice,
-            // productStock: productStock
-        },
-        success: function(response) {
-            alert(response);
-            window.location.href = 'productos.php';
-        }
-   });
+        success: function(dataResult) {
+            var dataResult = JSON.parse(dataResult);
+            if(dataResult.statusCode==200){
+                //$('#editEmployeeModal').modal('hide');
+                //alert('Data updated successfully !'); 
+                location.reload();						
+            }
+            else if(dataResult.statusCode==201){
+               alert(dataResult);
+            }
+    },
+    });
 });
 
 

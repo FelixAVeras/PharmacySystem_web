@@ -9,7 +9,7 @@
       </div>
       <div class="modal-body">
         <form method="post" class="formProductos" name="formProductosEdit" id="formProductosEdit">
-            <input class="form-control" type="hidden" name="idProducto" id="idProducto">
+            <input type="hidden" id="idProducto" name="idProducto" class="form-control" required>
             <div class="row">
                 <div class="col-12 col-md-3">
                     <div class="form-group">
