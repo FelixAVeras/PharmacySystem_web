@@ -21,9 +21,7 @@ if(isset($_POST['btn_logout'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pharmacy System - Categorias</title>
     <?php include ("headerLinks.php"); ?>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/custom.css">
-    <link rel="stylesheet" href="css/puntoVenta.css">
+    <link rel="stylesheet" href="./assets/css/puntoVenta.css">
 
     
 </head>
@@ -36,10 +34,12 @@ if(isset($_POST['btn_logout'])){
             <h1 class="text-center fw-bold mb-3 mt-3">
                Ventas
             </h1>
-            <button type="button" class="btn btnAgregar text-white mb-3 " data-bs-toggle="modal" data-bs-target="#addCategoryModal">
+           <a href="caja.php">
+           <button type="button" class="btn btnAgregar text-white mb-3 " data-bs-toggle="modal" data-bs-target="#addCategoryModal">
                 Nueva factura
                 <i class="bi bi-plus-lg"></i>
             </button>
+           </a>
            <div class="row m-auto mt-5 ms-5">
             <div class="col-3">
             <label for="formGroupExampleInput" class="form-label label-buscar mt-1">

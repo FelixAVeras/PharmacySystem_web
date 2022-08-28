@@ -19,8 +19,7 @@ if(isset($_POST['btn_logout'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pharmacy System - Productos</title>
     <?php include ("headerLinks.php"); ?>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/productos.css">
+    <link rel="stylesheet" href="./assets/css/productos.css">
 </head>
 <body>
 <div class="d-flex" id="wrapper">
@@ -29,6 +28,100 @@ if(isset($_POST['btn_logout'])){
         <?php include ("navbar.php"); ?>
         <div class="container-fluid">
             <h1 class="text-center mt-3">Productos</h1>
+            <p>
+            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                Button with data-bs-target
+            </button>
+            </p>
+            <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+            <form id="formProductos">
+            <div class="row mb-3">
+                <div class="col-12 col-md-3">
+                    <div class="form-group">
+                        <label for="productCode" class="control-label">
+                            Código 
+                        </label>
+                        <input type="number" name="productCode" class="form-control" id="productCode">
+                    </div>
+                </div>
+                <div class="col-12 col-md-9">
+                    <div class="form-group">
+                        <label for="productName" class="control-label">
+                            Nombre del producto
+                        </label>
+                        <input type="text" name="productName" class="form-control" id="productName">
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="row mt-3 mb-3">
+                <div class="col-12 col-md-6">
+                    <div class="form-group">
+                        <label for="" class="control-label">Imagen del Producto</label>
+                        <input type="file" name="" id="fileInput" class="form-control" onchange="imagePreview(event)">
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <img src="" alt="" id="preview" class="imagePrev">
+                </div>
+            </div> -->
+
+            <div class="row mb-3">
+                <div class="col-12 col-md-12">
+                    <div class="form-group">
+                        <label for="productCategory" class="control-label">Seleccione categoria</label>
+
+                        <select class="form-select" name="productCategory" id="productCategory">
+                            <option value="">--Seleccione categoria--</option>
+                            <?php
+                                $query = "SELECT * FROM categoria";
+
+                                $statement = $connection->query($query);
+
+                                if ($statement->num_rows > 0) {
+                                    while($row = $statement->fetch_array()) {
+                            ?>
+                            
+                            <option value="<?php echo $row['idCategoria']; ?>">
+                                <?php echo $row['categoryName']; ?>
+                            </option>
+                                
+                            <?php
+                                }
+                            }
+                            ?>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="productDescription" class="control-label">Descripción (Opcional)</label>
+                <textarea name="productDescription" id="productDescription" class="form-control custom-textarea"></textarea>
+            </div>
+
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <div class="form-group mt-3">
+                        <label for="productPrice" class="control-label">
+                            Precio
+                        </label>
+                        <input type="number" step=".01" name="productPrice" class="form-control" id="productPrice">
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="form-group mt-3">
+                        <label for="productStock" class="control-label">
+                            Existencia
+                        </label>
+                        <input type="number" name="productStock" class="form-control" id="productStock">
+                    </div>
+                </div>
+            </div>
+            
+        </form>
+            </div>
+            </div>
             <button type="button" class="btn btnAgregar text-white" data-bs-toggle="modal" data-bs-target="#addProductModal">
                 Agregar producto
                 <i class="bi bi-plus-lg"></i>
@@ -109,7 +202,7 @@ if(isset($_POST['btn_logout'])){
 
 <?php include ("footerLinks.php"); ?>
 
-<script src="js/productos.js"></script>
+<script src="./assets/js/productos.js"></script>
 
 </body>
 </html>

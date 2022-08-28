@@ -1,6 +1,6 @@
 
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/custom.css">
+<link rel="stylesheet" href="./assets/css/style.css">
+<link rel="stylesheet" href="./assets/css/custom.css">
 
 <nav class="navbar navbar-expand-lg navbar-light  border-bottom">
     <div class="container-fluid">

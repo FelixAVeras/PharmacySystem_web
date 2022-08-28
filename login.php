@@ -15,9 +15,9 @@ if (isset($_SESSION["username"])) {
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>GoodPharmacy - Inicio de Sesión</title>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-	<link rel="stylesheet" href="css/login.css">
+	<link rel="stylesheet" href="./assets/css/login.css">
 </head>
 <body>
 	
@@ -63,6 +63,6 @@ if (isset($_SESSION["username"])) {
 	</div>
 
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script src="./js/auth.js"></script>
+	<script src="./assets/js/auth.js"></script>
 </body>
 </html>

@@ -29,10 +29,16 @@
             <a href="puntoVenta.php" class="list-group-item  submenu">Ventas</a>
             </div>
         </div>
-        <a class="list-group-item list-group-item-action  p-3" href="#!">
+        <a class="list-group-item   p-3" data-bs-toggle="collapse" href="#collapseReportes" role="button" aria-expanded="false" aria-controls="collapseExample">
         <i class="bi bi-clipboard-data fs-5"></i>
-            Reportes
+            Reportes <i class="bi bi-chevron-down float-end"></i>
         </a>
+        <div class="collapse" id="collapseReportes">
+            <div class="list-group">
+            <a href="" class="list-group-item  submenu">Ventas</a>
+            <a href="listadoProductos.php" class="list-group-item  submenu ">Productos</a>
+            </div>
+        </div>
         <a class="list-group-item   p-3" href="#!">
         <i class="bi bi-people fs-5"></i>
         Empleados

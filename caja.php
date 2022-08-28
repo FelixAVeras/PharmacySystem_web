@@ -21,9 +21,7 @@ if(isset($_POST['btn_logout'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pharmacy System - Categorias</title>
     <?php include ("headerLinks.php"); ?>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/custom.css">
-    <link rel="stylesheet" href="css/caja.css">
+    <link rel="stylesheet" href="./assets/css/caja.css">
 
     
 </head>
@@ -125,7 +123,7 @@ if(isset($_POST['btn_logout'])){
             <td>5.00</td>
             <td>5%</td>
             <td>25.00</td>
-            <td>
+            <td class="eliminarProducto">
             <i class="bi bi-x-circle"></i>
             </td>
             </tr>
@@ -136,7 +134,7 @@ if(isset($_POST['btn_logout'])){
             <td>10</td>
             <td>10%</td>
             <td>100</td>
-            <td>
+            <td class="eliminarProducto">
             <i class="bi bi-x-circle"></i>
             </td>
             </tr>
