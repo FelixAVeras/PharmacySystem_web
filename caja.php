@@ -59,13 +59,14 @@ if(isset($_POST['btn_logout'])){
                 </div>
                 <div class="row">
                <div class="col-4">
-               <label for="buscarProducto" class="form-label">Buscar producto</label>
-                <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Buscar producto" aria-label="Recipient's username" aria-describedby="button-addon2">
-                <button class="btn btn-outline-secondary border-0 btn-buscar" type="button" id="buscarProducto">
-                <i class="bi bi-search"></i>
-                </button>
-               </div>
+                    <label for="buscarProducto" class="form-label">Buscar producto</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Buscar producto" autocomplete="off" id="inputBuscarProducto" aria-label="Recipient's username" aria-describedby="button-addon2">
+                        <button class="btn btn-outline-secondary border-0 btn-buscar" type="button" id="buscarProducto">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                    <div id="search_result" class="suggestions"></div>
                 </div>
                 <div class="col-3">
                 <div class="mb-3">
@@ -149,6 +150,6 @@ if(isset($_POST['btn_logout'])){
 
 
 <?php include ("footerLinks.php"); ?>
-
+<script src="./assets/js/caja.js"></script>
 </body>
 </html>

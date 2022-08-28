@@ -69,3 +69,17 @@ h1 {
   width: 200px;
   height: auto;
 }
+
+/****/
+/* .suggestions {
+  border: 1px solid #b31237;
+  padding: 10px;
+} */
+.productOption {
+  margin: 5px;
+}
+
+.productOption:hover {
+  color: #059862;
+  cursor: pointer;
+}
