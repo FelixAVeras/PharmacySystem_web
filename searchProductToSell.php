@@ -11,7 +11,7 @@ if (isset($_POST['query'])) {
   if (mysqli_num_rows($result) > 0) {
     $output = "<ul class='searchBox'>";
     while ($res = mysqli_fetch_array($result)) {
-      echo "<li class='productOption' id='".$res['idProducto']."'>". $res['productName'] ."</li>";
+      echo "<li class='productOption' id='".$res['productPrice']."'>". $res['productName'] ."</li>";
     }
     $output .= '</ul>';
   } else {
