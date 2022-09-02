@@ -29,12 +29,13 @@ if(isset($_POST['btn_logout'])){
         <div class="container-fluid">
             <h1 class="text-center mt-3">Productos</h1>
             <p>
-            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                Button with data-bs-target
+            <button class="btn btnAgregar text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            Agregar producto
+                <i class="bi bi-plus-lg"></i>
             </button>
             </p>
             <div class="collapse" id="collapseExample">
-            <div class="card card-body">
+            <div class="card card-body mb-3">
             <form id="formProductos">
             <div class="row mb-3">
                 <div class="col-12 col-md-3">
@@ -53,7 +54,9 @@ if(isset($_POST['btn_logout'])){
                         <input type="text" name="productName" class="form-control" id="productName">
                     </div>
                 </div>
+                
             </div>
+            
             <!-- <div class="row mt-3 mb-3">
                 <div class="col-12 col-md-6">
                     <div class="form-group">
@@ -120,12 +123,19 @@ if(isset($_POST['btn_logout'])){
             </div>
             
         </form>
+        <div class="container mt-3">
+        <button type="button" class="btn btn-cancelarProductos" id="btnCancel" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-guardarProductos" id="btnAdd">Guardar Cambios</button>
+
+
+        </div>
             </div>
+
             </div>
-            <button type="button" class="btn btnAgregar text-white" data-bs-toggle="modal" data-bs-target="#addProductModal">
+            <!-- <button type="button" class="btn btnAgregar text-white" data-bs-toggle="modal" data-bs-target="#addProductModal">
                 Agregar producto
                 <i class="bi bi-plus-lg"></i>
-            </button>
+            </button> -->
             <div class="input-group mb-3 mt-3">
                 <input type="text" class="form-control" placeholder="Buscar producto"
                  aria-label="Recipient's username" aria-describedby="button-addon2">
@@ -133,6 +143,7 @@ if(isset($_POST['btn_logout'])){
                     <i class="bi bi-search"></i>
                 </button>
             </div>
+
 
             <?php 
             setlocale(LC_MONETARY, 'en-us');
@@ -197,7 +208,7 @@ if(isset($_POST['btn_logout'])){
 </div>   
 
 <?php include('Modals/ProductoModal/DetailsProductoModal.php'); ?>
-<?php include('Modals/ProductoModal/AddProductoModal.php'); ?>
+<!-- <?php include('Modals/ProductoModal/AddProductoModal.php'); ?> -->
 <?php include('Modals/ProductoModal/EditProductoModal.php'); ?>
 
 <?php include ("footerLinks.php"); ?>
