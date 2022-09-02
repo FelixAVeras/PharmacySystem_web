@@ -71,7 +71,7 @@ if(isset($_POST['btn_logout'])){
                 <div class="col-3">
                 <div class="mb-3">
                 <label for="precio" class="form-label">Precio</label>
-                <input type="text" class="form-control" id="precio">
+                <input type="text" class="form-control" id="precio" readonly>
                 </div>
                 </div>
                 <div class="col-3">

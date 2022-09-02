@@ -12,18 +12,17 @@ $(document).ready(function() {
                     query: query
                 },
                 success: function(data) {
+                    $('#search_result').fadeIn();
                     $('#search_result').html(data);
-                    $('#search_result').css('display', 'block');
-                    $('#inputBuscarProducto').focusout(function() {
-                        $('#search_result').css('display', 'none');
-                    });
-                    $('#inputBuscarProducto').focusout(function() {
-                        $('#search_result').css('display', 'block');
-                    });
                 }
             });
         } else {
             $('#search_result').css('display', 'none');
         }
+    });
+
+    $(document).on('click', 'li', function() {
+        $('#inputBuscarProducto').val($(this).text());
+        $('#search_result').fadeOut();
     });
 });

@@ -24,3 +24,12 @@
 .eliminarProducto i {
   color: #f03813;
 }
+
+ul {
+  background-color:#eee;  
+  cursor:pointer;
+}
+
+ul li {
+  padding: 12px;
+}
