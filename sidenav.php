@@ -35,7 +35,7 @@
         </a>
         <div class="collapse" id="collapseReportes">
             <div class="list-group">
-            <a href="" class="list-group-item  submenu">Ventas</a>
+            <a href="listadoVentas.php" class="list-group-item  submenu">Ventas</a>
             <a href="listadoProductos.php" class="list-group-item  submenu ">Productos</a>
             </div>
         </div>

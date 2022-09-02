@@ -69,9 +69,10 @@ if(isset($_POST['btn_logout'])){
                     <div id="search_result" class="suggestions"></div>
                 </div>
                 <div class="col-3">
-                <div class="mb-3">
                 <label for="precio" class="form-label">Precio</label>
+                <div class="mb-3 input-group">
                 <input type="text" class="form-control" id="precio" readonly>
+               
                 </div>
                 </div>
                 <div class="col-3">
@@ -112,7 +113,6 @@ if(isset($_POST['btn_logout'])){
             <th scope="col">Cant.</th>
             <th scope="col">Descripción</th>
             <th scope="col">Precio unit.</th>
-            <th scope="col">Descuento</th>
             <th scope="col">Precio total</th>
             </tr>
         </thead>
@@ -122,7 +122,6 @@ if(isset($_POST['btn_logout'])){
             <td>5</td>
             <td>Dramidom</td>
             <td>5.00</td>
-            <td>5%</td>
             <td>25.00</td>
             <td class="eliminarProducto">
             <i class="bi bi-x-circle"></i>
@@ -133,7 +132,6 @@ if(isset($_POST['btn_logout'])){
             <td>3</td>
             <td>Fendramin</td>
             <td>10</td>
-            <td>10%</td>
             <td>100</td>
             <td class="eliminarProducto">
             <i class="bi bi-x-circle"></i>
