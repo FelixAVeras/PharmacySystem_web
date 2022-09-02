@@ -1,5 +1,3 @@
-
-
 $(document).ready(function() {
     $('#inputBuscarProducto').keyup(function() {
         var query = $(this).val();
@@ -24,5 +22,8 @@ $(document).ready(function() {
     $(document).on('click', 'li', function() {
         $('#inputBuscarProducto').val($(this).text());
         $('#search_result').fadeOut();
+
+        console.log($(this).attr('id'));
+        $('#precio').val($(this).attr('id'));
     });
 });
