@@ -78,12 +78,12 @@ if(isset($_POST['btn_logout'])){
                 <div class="col-3">
                 <div class="mb-3">
                 <label for="cantidad" class="form-label">Cant.</label>
-                <input type="text" class="form-control" id="cantidad">
+                <input type="number" class="form-control" id="cantidad">
                 </div>
                  </div>
                  <div class="col-2">
                 <div class="mb-3">
-                <button type="button" class=" btn-agregar border-0 p-2 rounded-3">
+                <button type="button" id="btnAgregar" class=" btn-agregar border-0 p-2 rounded-3">
                     Agregar
                 </button>
                 </div>
