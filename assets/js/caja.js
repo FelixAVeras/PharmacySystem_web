@@ -27,6 +27,17 @@ $(document).ready(function () {
     console.log($(this).attr("id"));
     $("#precio").val($(this).attr("id"));
   });
+
+  //Disabling add button to avoid empty data.
+  var precio = document.getElementById('precio').value;
+  var cantidad = document.getElementById('cantidad').value;
+  var nombreProducto = document.getElementById('inputBuscarProducto').value;
+  
+  if (nombreProducto == '' || nombreProducto == null &&
+      precio == '' || precio == null &&
+      cantidad == '' || cantidad == null) {
+        document.getElementById(btnAgregar).setAttribute('disabled', '');
+      }
 });
 
 // Calculate total amount by quantity of product
@@ -36,18 +47,18 @@ function totalByQuantity(price, quantity) {
   return result;
 }
 
-// Method for add shoping product list in localStorage
+//Clear LocalStorage
+document.getElementById('btnClearList').addEventListener('click', function() {
+  localStorage.clear();
+});
+
+// Method for add shoping product list in localStorage and showing in table
 let productList = localStorage.getItem('productList') ? JSON.parse(localStorage.getItem('productList')) : [];
 localStorage.setItem('productsList', JSON.stringify(productList));
 
-const productData = JSON.parse(localStorage.getItem('productList'));
-
-console.log(productData);
-
-// 
 document.getElementById('btnAgregar').addEventListener('click', function(){
-  var precio = document.getElementById('precio').value;
-  var cantidad = document.getElementById('cantidad').value;
+  // var precio = document.getElementById('precio').value;
+  // var cantidad = document.getElementById('cantidad').value;
 
   document.getElementById('vendedor').value = totalByQuantity(precio, cantidad);
 
@@ -64,5 +75,26 @@ document.getElementById('btnAgregar').addEventListener('click', function(){
   document.getElementById('precio').value = '';
   document.getElementById('cantidad').value = '';
 
-  console.log(localStorage.getItem('productList'));
+  productList = JSON.parse(localStorage.getItem('productList'));
+  
+  // for (let i = 0; productList.length; i++) {
+  //   document.getElementById('data').innerHTML = '<span>' + productList[i].productName + '</span>';
+  // }
+
+  showData();
 });
+
+function showData() {
+  for (let i = 0; productList.length; i++) {
+    document.getElementById('data').innerHTML = `<tr>
+                                                  <th scope="row">`+ productList[i].productCode +`</th>
+                                                  <td>5</td>
+                                                  <td>`+ productList[i].productName +`</td>
+                                                  <td>5.00</td>
+                                                  <td>25.00</td>
+                                                  <td class="eliminarProducto">
+                                                    <i class="bi bi-x-circle"></i>
+                                                  </td>
+                                                </tr>`;
+  }
+}
