@@ -208,7 +208,9 @@ if(isset($_POST['btn_logout'])){
 </div>   
 
 <?php include('Modals/ProductoModal/DetailsProductoModal.php'); ?>
-<!-- <?php include('Modals/ProductoModal/AddProductoModal.php'); ?> -->
+ <?php 
+//  include('Modals/ProductoModal/AddProductoModal.php');
+  ?>
 <?php include('Modals/ProductoModal/EditProductoModal.php'); ?>
 
 <?php include ("footerLinks.php"); ?>
