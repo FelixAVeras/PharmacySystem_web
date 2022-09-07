@@ -1,12 +1,15 @@
 <?php
-
 session_start();
-
-if (!isset($_SESSION['username']) && !empty($_SESSION['username'])) {    
-    header('Location: login.php');
+ 
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+     header("location: login.php");
+     exit;
 }
 
-include_once "config/connection.php";
+// if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+//      header("location: login_test.php");
+//      exit;
+// }
 
 ?>
 

@@ -1,12 +1,66 @@
 <?php
-
 session_start();
-
-if (isset($_SESSION["username"])) { 
-	header("location: dashboard.php"); 
-	exit(); 
+ 
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+    header("location: dashboard.php");
+    exit;
 }
+ 
+require_once "./config/connection.php";
+ 
+$username = $password = "";
+$username_err = $password_err = $login_err = "";
+ 
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+ 
+    if(empty(trim($_POST["username"]))){
+        $username_err = "Por favor, ingresa un nombre de usuario.";
+    } else{
+        $username = trim($_POST["username"]);
+    }
+    
+    if(empty(trim($_POST["password"]))){
+        $password_err = "Por favor, ingresa una contraseña.";
+    } else{
+        $password = trim($_POST["password"]);
+    }
+    
+    if(empty($username_err) && empty($password_err)){
+        $sql = "SELECT idusuario, username, password FROM usuario WHERE username = :username";
+        
+        if($stmt = $connection->prepare($sql)){
+            $stmt->bindParam(":username", $param_username, PDO::PARAM_STR);
+            
+			$param_username = trim($_POST["username"]);
+            
+			if($stmt->execute()){
+                if($stmt->rowCount() == 1){
+                    if($row = $stmt->fetch()){
+                        $id = $row["idusuario"];
+                        $username = $row["username"];
+                        $hashed_password = $row["password"];
+                        
+						session_start();
+                            
+                        $_SESSION["loggedin"] = true;
+						$_SESSION["idusuario"] = $id;
+						$_SESSION["username"] = $username;                            
+                        
+						header("location: dashboard.php");
+                    }
+                } else{
+                    $login_err = "Nombre de Usuario o Contraseña son invalidos.";
+                }
+            } else{
+                echo "Oops! Algo salio mal, intente de nuevo mas tarde...";
+            }
 
+			unset($stmt);
+        }
+    }
+    
+	unset($connection);
+}
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +85,7 @@ if (isset($_SESSION["username"])) {
 				<div class="card login mb-3">
 					<h4 class="card-header text-center text-white p-4">Inicio de Sesion</h4>
 					<div class="card-body mt-3">
-						<form action="" id="login-form" method="POST">
+						<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 							<div class="form-group mb-3 text-white">
 								<label for="username" class="mb-2">Nombre de Usuario</label>
 								<div class="input-group mb-3">
@@ -51,7 +105,7 @@ if (isset($_SESSION["username"])) {
 								</div>
 							</div>
 							<div class="mt-4 mb-3 d-flex justify-content-center gap-2">
-								<button type="button" id="btnSubmit" class="btn btn-iniciar w-75 border-3">Iniciar</button>
+								<button type="submit" id="btnSubmit" class="btn btn-iniciar w-75 border-3">Iniciar</button>
 							</div>
 						</form>
 					</div>
@@ -63,6 +117,5 @@ if (isset($_SESSION["username"])) {
 	</div>
 
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script src="./assets/js/auth.js"></script>
 </body>
 </html>

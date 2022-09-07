@@ -27,17 +27,6 @@ $(document).ready(function () {
     console.log($(this).attr("id"));
     $("#precio").val($(this).attr("id"));
   });
-
-  //Disabling add button to avoid empty data.
-  var precio = document.getElementById('precio').value;
-  var cantidad = document.getElementById('cantidad').value;
-  var nombreProducto = document.getElementById('inputBuscarProducto').value;
-  
-  if (nombreProducto == '' || nombreProducto == null &&
-      precio == '' || precio == null &&
-      cantidad == '' || cantidad == null) {
-        document.getElementById(btnAgregar).setAttribute('disabled', '');
-      }
 });
 
 // Calculate total amount by quantity of product
@@ -56,10 +45,7 @@ document.getElementById('btnClearList').addEventListener('click', function() {
 let productList = localStorage.getItem('productList') ? JSON.parse(localStorage.getItem('productList')) : [];
 localStorage.setItem('productsList', JSON.stringify(productList));
 
-document.getElementById('btnAgregar').addEventListener('click', function(){
-  // var precio = document.getElementById('precio').value;
-  // var cantidad = document.getElementById('cantidad').value;
-
+document.getElementById('btnAgregar').addEventListener('click', function() {
   document.getElementById('vendedor').value = totalByQuantity(precio, cantidad);
 
   var productToBuy = {
@@ -86,7 +72,7 @@ document.getElementById('btnAgregar').addEventListener('click', function(){
 
 function showData() {
   for (let i = 0; productList.length; i++) {
-    document.getElementById('data').innerHTML = `<tr>
+    document.getElementById('data').innerHTML += `<tr>
                                                   <th scope="row">`+ productList[i].productCode +`</th>
                                                   <td>5</td>
                                                   <td>`+ productList[i].productName +`</td>

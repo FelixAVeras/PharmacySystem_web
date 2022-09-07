@@ -1,10 +1,15 @@
 <?php
 
-$connection = new mysqli('localhost', 'root', '', 'pharmacydb');
+define('DB_SERVER', 'localhost');
+define('DB_USERNAME', 'root');
+define('DB_PASSWORD', '');
+define('DB_NAME', 'pharmacydb');
 
-// if ($connection->connect_error) {
-// 	die('Conexion fallida: '. $connection->connect_error);
-// }
- 
+try {
+    $connection = new PDO("mysql:host=" . DB_SERVER . ";dbname=" . DB_NAME, DB_USERNAME, DB_PASSWORD);
+    $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("ERROR: Could not connect. " . $e->getMessage());
+}
 
 ?>

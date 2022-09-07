@@ -23,6 +23,7 @@ if(isset($_POST['btn_logout'])){
     <?php include ("headerLinks.php"); ?>
     <link rel="stylesheet" href="./assets/css/caja.css">
 
+    <link rel="stylesheet" href="./assets/css/jquery.dataTables.min.css">
     
 </head>
 <body>
@@ -105,7 +106,7 @@ if(isset($_POST['btn_logout'])){
                 </div>
             </div>
             <div class="table-responsive">
-                <table class="table">
+                <table class="table" id="caja_table">
                     <thead>
                         <tr>
                         <th scope="col">Código</th>
@@ -139,5 +140,6 @@ if(isset($_POST['btn_logout'])){
 
 <?php include ("footerLinks.php"); ?>
 <script src="./assets/js/caja.js"></script>
+<!-- <script src="./assets/js/jquery.dataTables.min.js"></script> -->
 </body>
 </html>
