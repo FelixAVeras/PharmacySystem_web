@@ -42,7 +42,7 @@ if(isset($_POST['btn_logout'])){
                     <div class="col-3">
                         <div class="mb-3">
                             <label for="fechaVenta" class="form-label">Fecha de venta</label>
-                            <input type="date" class="form-control" id="fechaVenta">
+                            <input type="text" class="form-control" id="fechaVenta" readonly>
                         </div>
                     </div>
                     <div class="col-6">
@@ -117,7 +117,7 @@ if(isset($_POST['btn_logout'])){
                         </tr>
                     </thead>
                     <tbody>
-                        <span id="data"></span>
+                        <div id="data"></div>
                         <!-- <tr>
                             <th scope="row">112</th>
                             <td>5</td>
