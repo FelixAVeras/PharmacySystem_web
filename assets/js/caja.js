@@ -33,12 +33,9 @@ $(document).ready(function () {
     console.log($(this).attr("id"));
     $("#precio").val($(this).attr("id"));
   });
-<<<<<<< HEAD
-=======
 
   //Showing productlist
   showData();
->>>>>>> 36d046e (cambios)
 });
 
 // Calculate total amount by quantity of product
