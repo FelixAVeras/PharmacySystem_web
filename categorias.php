@@ -1,17 +1,13 @@
 <?php
-include "config/connection.php";
-
-if(!isset($_SESSION['username']) && !empty($_SESSION['username'])){    
-    header('Location: login.php');
+session_start();
+ 
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+     header("location: login.php");
+     exit;
 }
 
-if(isset($_POST['btn_logout'])){
-    session_destroy();
-    header('Location: login.php');
-}
+include_once "./Config/connection.php";
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,8 +17,8 @@ if(isset($_POST['btn_logout'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pharmacy System - Categorias</title>
     <?php include ("headerLinks.php"); ?>
-    <link rel="stylesheet" href="./asset/css/style.css">
-    <link rel="stylesheet" href="./asset/css/custom.css">
+    <link rel="stylesheet" href="./Assets/css/style.css">
+    <link rel="stylesheet" href="./Assets/css/custom.css">
     
 </head>
 <body>
@@ -47,8 +43,8 @@ if(isset($_POST['btn_logout'])){
 
             $statement = $connection->query($query);
 
-            if ($statement->num_rows > 0) {
-                while($row = $statement->fetch_array()) {
+            if ($statement->rowCount() > 0) {
+                while($row = $statement->fetch()) {
 
             ?>
                     

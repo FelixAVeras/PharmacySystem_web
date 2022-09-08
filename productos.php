@@ -1,14 +1,12 @@
 <?php
-include("config/connection.php");
+session_start();
 
-if(!isset($_SESSION['username']) && !empty($_SESSION['username'])){    
-    header('Location: login.php');
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+    header("location: login.php");
+    exit;
 }
 
-if(isset($_POST['btn_logout'])){
-    session_destroy();
-    header('Location: login.php');
-}
+include_once "./Config/connection.php";
 ?>
 
 <!DOCTYPE html>
@@ -82,7 +80,7 @@ if(isset($_POST['btn_logout'])){
                                 $statement = $connection->query($query);
 
                                 if ($statement->num_rows > 0) {
-                                    while($row = $statement->fetch_array()) {
+                                    while($row = $statement->fetch()) {
                             ?>
                             
                             <option value="<?php echo $row['idCategoria']; ?>">
@@ -156,7 +154,7 @@ if(isset($_POST['btn_logout'])){
 
             $statement = $connection->query($query);
 
-            if ($statement->num_rows > 0) {
+            if ($statement->rowCount() > 0) {
             ?>
             <table class="table table-hover table-stripped">
                 <thead>
@@ -171,7 +169,7 @@ if(isset($_POST['btn_logout'])){
                 <tbody class="table-group-divider">
 
             <?php
-                while($row = $statement->fetch_array()) {
+                while($row = $statement->fetch()) {
             ?>
             <tr>
                 <th scope="row"><?php echo $row['productCode']; ?></th>
@@ -215,7 +213,7 @@ if(isset($_POST['btn_logout'])){
 
 <?php include ("footerLinks.php"); ?>
 
-<script src="./assets/js/productos.js"></script>
+<script src="./Assets/js/productos.js"></script>
 
 </body>
 </html>

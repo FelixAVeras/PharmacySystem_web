@@ -14,11 +14,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     
     if (empty($categoryName_err)) {
-        $sql = "INSERT INTO categoria (categoryName) VALUES (?)";
+        $sql = "INSERT INTO categoria (categoryName) VALUES (:categoryName)";
 
         if($stmt = $connection->prepare($sql)){
 
-            $stmt->bind_param("s", $param_name);
+            $stmt->bindParam(":categoryName", $param_name);
             
             $param_name = $categoryName;
 
@@ -30,9 +30,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
         
-        $stmt->close();
+        unset($stmt);
     }
 
-    $connection->close();
+    unset($connection);
 }
 ?>
