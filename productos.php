@@ -79,7 +79,7 @@ include_once "./Config/connection.php";
 
                                 $statement = $connection->query($query);
 
-                                if ($statement->num_rows > 0) {
+                                if ($statement->rowCount() > 0) {
                                     while($row = $statement->fetch()) {
                             ?>
                             
@@ -179,13 +179,13 @@ include_once "./Config/connection.php";
                 <td><?php echo $row['productStock']; ?></td>
                 <td>
                     
-                    <button id="btnDetails" data-id="<?php echo $row['idProducto']; ?>" class="btn-detalles mx-2 border-0" disabled>
+                    <button id="btnDetails" data-id="<?php echo $row['idProducto']; ?>" data-bs-toggle="tooltip" data-bs-placement="top" title="Detalles" class="btn-detalles mx-2 border-0" disabled>
                         <i class="bi bi-eye-fill"></i>
                     </button>
-                    <button id="btnUpdate" data-id="<?php echo $row['idProducto']; ?>" class="btn-editar mx-2 border-0">
+                    <button id="btnUpdate" data-id="<?php echo $row['idProducto']; ?>" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar" class="btn-editar mx-2 border-0">
                         <i class="bi bi-pencil-fill"></i>
                     </button>
-                    <button id="btnDelete" data-id="<?php echo $row['idProducto']; ?>" class="btn-delete border-0">
+                    <button id="btnDelete" data-id="<?php echo $row['idProducto']; ?>" data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn-delete border-0">
                         <i class="bi bi-trash3"></i>
                     </button>
                 </td>
@@ -214,6 +214,14 @@ include_once "./Config/connection.php";
 <?php include ("footerLinks.php"); ?>
 
 <script src="./Assets/js/productos.js"></script>
+
+<script>
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+
+var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+  return new bootstrap.Tooltip(tooltipTriggerEl)
+})
+</script>
 
 </body>
 </html>

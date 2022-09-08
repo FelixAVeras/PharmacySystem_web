@@ -13,8 +13,6 @@ VALUES('$productName', '$productDescription', '$productCode', '$productPrice',	'
 
 if ($connection->query($query)) {
   echo json_encode(array("statusCode" => 200));
-  // header("location: productos.php");
-  // exit();
 } else {
   echo "Oops! Something went wrong. Please try again later.";
 }
