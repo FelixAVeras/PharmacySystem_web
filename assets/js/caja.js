@@ -51,9 +51,9 @@ document.getElementById("btnClearList").addEventListener("click", function () {
 });
 
 // Method for add shoping product list in localStorage and showing in table
-let productList = localStorage.getItem("productList")
-  ? JSON.parse(localStorage.getItem("productList"))
-  : [];
+let productList = localStorage.getItem("productList") ?
+  JSON.parse(localStorage.getItem("productList")) :
+  [];
 localStorage.setItem("productsList", JSON.stringify(productList));
 
 document.getElementById("btnAgregar").addEventListener("click", function () {
