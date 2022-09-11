@@ -49,7 +49,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 						header("location: dashboard.php");
                     }
                 } else{
-                    $login_err = "Nombre de Usuario o Contraseña son invalidos.";
+                    $login_err = "Nombre de Usuario y/o Contraseña son invalidos.";
                 }
             } else{
                 echo "Oops! Algo salio mal, intente de nuevo mas tarde...";
@@ -77,11 +77,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	
 	<div class="container fw-bold  form-login">
 		<h1 class="text-center mb-3">GoodPharmacy</h1>
-		<!-- <h3 class="text-muted text-center"></h3> -->
-
+		
 		<div class="row mt-5">
 			<div class="col-12 col-md-4"></div>
 			<div class="col-12 col-md-4 ">
+				<?php 
+				if(!empty($login_err)){
+					echo '<div class="alert alert-danger">' . $login_err . '</div>';
+				}        
+				?>
 				<div class="card login mb-3">
 					<h4 class="card-header text-center text-white p-4">Inicio de Sesion</h4>
 					<div class="card-body mt-3">
