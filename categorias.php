@@ -43,8 +43,7 @@ include_once "./Config/connection.php";
             if ($result->rowCount() > 0) {
                 while ($row = $result->fetch()) {
                     if ($row['nivel']=='Administrador') {
-                    ?>
-                    
+                    ?>               
                     <button type="button" class="btn btnAgregar text-white " data-bs-toggle="modal" data-bs-target="#addCategoryModal">
                         Agregar Nueva 
                         <i class="bi bi-plus-lg"></i>
