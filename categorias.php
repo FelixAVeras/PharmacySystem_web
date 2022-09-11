@@ -6,6 +6,12 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
      exit;
 }
 
+$usuario = $_SESSION['username'];
+
+if(!isset($usuario)){
+    header("location: login.php");
+}
+
 include_once "./Config/connection.php";
 ?>
 
@@ -30,10 +36,24 @@ include_once "./Config/connection.php";
             <h1 class="text-center fw-bold mb-3 mt-3">
                 Categorias
             </h1>
-            <button type="button" class="btn btnAgregar text-white " data-bs-toggle="modal" data-bs-target="#addCategoryModal">
-                Agregar Nueva 
-                <i class="bi bi-plus-lg"></i>
-            </button>
+            <?php
+            $query= "SELECT * FROM usuario INNER JOIN niveles ON usuario.idnivel = niveles.idnivel WHERE username='$usuario'";
+            $result = $connection->query($query);
+
+            if ($result->rowCount() > 0) {
+                while ($row = $result->fetch()) {
+                    if ($row['nivel']=='Administrador') {
+                    ?>
+                    
+                    <button type="button" class="btn btnAgregar text-white " data-bs-toggle="modal" data-bs-target="#addCategoryModal">
+                        Agregar Nueva 
+                        <i class="bi bi-plus-lg"></i>
+                    </button>
+                    <?php            
+                    }
+                }
+            } 
+            ?>
 
             <hr>
             <div class="row  p-3 categorias">

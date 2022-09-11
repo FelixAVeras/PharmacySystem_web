@@ -24,9 +24,25 @@ include ("headerLinks.php");
             
                 <h3 class=" mt-3">Nuevo Empleado</h3>
 
+                <form action="">
+                    <div class="row mb-3">
+                        <div class="col-12 col-md-4">
+                            <div class="form-group">
+                                <label for="" class="control-label"></label>
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="form-group"><label for="" class="control-label"></label><input type="text" class="form-control"></div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="form-group"><label for="" class="control-label"></label><input type="text" class="form-control"></div>
+                        </div>
+                    </div>
+                </form>
+
             </div>
 
-        </div>
         </div>
     </div>       
 
