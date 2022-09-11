@@ -22,7 +22,7 @@ include ("headerLinks.php");
             <?php include ("navbar.php"); ?>
             <div class="container-fluid">
             
-                <h3>Nuevo Empleado</h3>
+                <h3 class=" mt-3">Nuevo Empleado</h3>
 
             </div>
 
