@@ -6,13 +6,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
      exit;
 }
 
-$usuario = $_SESSION['username'];
+include_once "./config/connection.php";
 
-if(!isset($usuario)){
-    header("location: login.php");
-}
-
-include_once "./Config/connection.php";
 ?>
 
 <!DOCTYPE html>
