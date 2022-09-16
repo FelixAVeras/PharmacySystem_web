@@ -7,10 +7,11 @@ if (isset($_POST['query'])) {
             WHERE productName 
             LIKE '%{$_POST['query']}%' LIMIT 100";
 
-  $result = mysqli_query($connection, $query);
-  if (mysqli_num_rows($result) > 0) {
+  $result = $connection->query($query);
+
+  if ($result->rowCount() > 0) {
     $output = "<ul class='searchBox'>";
-    while ($res = mysqli_fetch_array($result)) {
+    while ($res = $result->fetch()) {
       echo "<li class='productOption' id='".$res['productPrice']."'>". $res['productName'] ."</li>";
     }
     $output .= '</ul>';

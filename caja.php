@@ -1,14 +1,12 @@
 <?php
-include "config/connection.php";
+session_start();
 
-if(!isset($_SESSION['username']) && !empty($_SESSION['username'])){    
-    header('Location: login.php');
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+    header("location: login.php");
+    exit;
 }
 
-if(isset($_POST['btn_logout'])){
-    session_destroy();
-    header('Location: login.php');
-}
+include_once "./Config/connection.php";
 ?>
 
 
@@ -62,7 +60,7 @@ if(isset($_POST['btn_logout'])){
                     <div class="col-4">
                         <label for="buscarProducto" class="form-label">Buscar producto</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Buscar producto" autocomplete="off" id="inputBuscarProducto" aria-label="Recipient's username" aria-describedby="button-addon2">
+                            <input type="text" class="form-control" placeholder="Buscar producto" autocomplete="off" id="inputBuscarProducto">
                             <button class="btn btn-outline-secondary border-0 btn-buscar" type="button" id="buscarProducto">
                                 <i class="bi bi-search"></i>
                             </button>
