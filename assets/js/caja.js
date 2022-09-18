@@ -56,33 +56,29 @@ let productList = localStorage.getItem("productList") ?
   [];
 localStorage.setItem("productsList", JSON.stringify(productList));
 
-document.getElementById("btnAgregar").addEventListener("click", function () {
-  // var precio = document.getElementById('precio').value;
-  // var cantidad = document.getElementById('cantidad').value;
+//document.getElementById("btnAgregar").addEventListener("click", function () {
+  // document.getElementById("vendedor").value = totalByQuantity(precio, cantidad);
 
-  document.getElementById("vendedor").value = totalByQuantity(precio, cantidad);
+  // var productToBuy = {
+  //   productName: document.getElementById("inputBuscarProducto").value,
+  //   productPrice: document.getElementById("precio").value,
+  //   quantity: document.getElementById("cantidad").value,
+  // };
 
-  var productToBuy = {
-    productName: document.getElementById("inputBuscarProducto").value,
-    productPrice: document.getElementById("precio").value,
-    quantity: document.getElementById("cantidad").value,
-  };
+  // productList.push(productToBuy);
+  // localStorage.setItem("productList", JSON.stringify(productList));
 
-  productList.push(productToBuy);
-  localStorage.setItem("productList", JSON.stringify(productList));
+  // document.getElementById("inputBuscarProducto").value = "";
+  // document.getElementById("precio").value = "";
+  // document.getElementById("cantidad").value = "";
 
-  document.getElementById("inputBuscarProducto").value = "";
-  document.getElementById("precio").value = "";
-  document.getElementById("cantidad").value = "";
+  // productList = JSON.parse(localStorage.getItem("productList"));
 
-  productList = JSON.parse(localStorage.getItem("productList"));
+  // AddToCart();
+  // showData();
+//});
 
-  // for (let i = 0; productList.length; i++) {
-  //   document.getElementById('data').innerHTML = '<span>' + productList[i].productName + '</span>';
-  // }
-
-  showData();
-});
+document.getElementById("btnAgregar").addEventListener('click', AddToCart);
 
 function showData() {
   for (let i = 0; productList.length; i++) {
@@ -103,3 +99,29 @@ function showData() {
         </tr>`;
   }
 }
+
+function AddToCart() {
+  let sellForm = $('#sellForm').serialize();
+
+  var productName = document.getElementById('buscarProducto').value;
+  var quantity = document.getElementById('precio').value;
+  var price = document.getElementById('cantidad').value;
+
+  if (productName == null || productName == '' &&
+      quantity == null || quantity == '' &&
+      price == null || price == '') {
+        alert('No hay productos seleccionados');
+        return false;
+      }
+
+  $.ajax({
+    type: 'POST',
+    url: '../../caja.php',
+    data: sellForm,
+    success: function(response) {
+      let dataResult = JSON.parse(response);
+
+      dataResult == 200 ? location.reload() : alert(response);
+    }
+  });
+} 

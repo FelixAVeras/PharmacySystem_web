@@ -7,6 +7,12 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 }
 
 include_once "./Config/connection.php";
+
+
+
+
+
+
 ?>
 
 
@@ -35,6 +41,7 @@ include_once "./Config/connection.php";
             </h1>
             <hr>
             <h4 class="ms-3 mb-5 nuevaVenta fw-normal">Nueva venta</h4>
+            <form id="sellForm">
             <div class="container  shadow-sm">
                 <div class="row">
                     <div class="col-3">
@@ -81,15 +88,15 @@ include_once "./Config/connection.php";
                     </div>
                     <div class="col-2">
                          <div class="mb-3">
-                            <button type="button" id="btnAgregar" class=" btn-agregar border-0 p-2 rounded-3">
-                                Agregar
+                            <button type="button" id="btnAgregar" name="agregar_medicina" class=" btn-agregar border-0 p-2 rounded-3">
+                                Agregar <i class="bi bi-plus-lg"></i>
                             </button>
                         </div>
                     </div>
                     <div class="col-3">
                         <div class="mb-3">
                             <label for="Vendedor" class="form-label">Vendedor</label>
-                            <input type="text" class="form-control" id="vendedor">
+                            <input type="text" class="form-control" id="vendedor" value="<?php echo htmlspecialchars($_SESSION["username"]); ?>" readonly>
                         </div>
                     </div>
                 </div>
@@ -103,29 +110,41 @@ include_once "./Config/connection.php";
                     </button>
                 </div>
             </div>
+</form>
             <div class="table-responsive">
                 <table class="table" id="caja_table">
                     <thead>
                         <tr>
-                        <th scope="col">Código</th>
+                        <th scope="col">Nombre Producto</th>
                         <th scope="col">Cant.</th>
                         <th scope="col">Descripción</th>
-                        <th scope="col">Precio unit.</th>
                         <th scope="col">Precio total</th>
+                        <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <div id="data"></div>
-                        <!-- <tr>
-                            <th scope="row">112</th>
-                            <td>5</td>
-                            <td>Dramidom</td>
-                            <td>5.00</td>
-                            <td>25.00</td>
+                        <?php
+                        $query = "SELECT * FROM Cart";
+                        $result = $connection->query($query);
+
+                        if ($result->rowCount() > 0) {
+                            while ($row = $result->fetch()) {
+                        ?>
+                        
+                        <tr>
+                            <td><?php echo $row['productName']?></td>
+                            <td><?php echo $row['quantity']?></td>
+                            <td><?php echo $row['productPrice']?></td>
+                            <td><?php echo $row['totalPrice']?></td>
                             <td class="eliminarProducto">
                                 <i class="bi bi-x-circle"></i>
                             </td>
-                        </tr> -->
+                        </tr>
+                        
+                        <?php
+                            }
+                        }
+                        ?>
                     </tbody>
                 </table>
             </div>
