@@ -78,27 +78,12 @@ localStorage.setItem("productsList", JSON.stringify(productList));
   // showData();
 //});
 
-document.getElementById("btnAgregar").addEventListener('click', AddToCart);
+document.getElementById("btnAgregar").addEventListener('click', function() {
+  console.log('Hiciste CLick');
+  debugger;
 
-function showData() {
-  for (let i = 0; productList.length; i++) {
-    document.getElementById("data").innerHTML =
-      `<tr>
-      <th scope="row">` +
-      //productList[i].productCode +
-      `</th>
-        <td>5</td>
-        <td>` +
-      productList[i].productName +
-      `</td>
-          <td>5.00</td>
-          <td>25.00</td>
-          <td class="eliminarProducto">
-            <i class="bi bi-x-circle"></i>
-          </td>
-        </tr>`;
-  }
-}
+  AddToCart();
+});
 
 function AddToCart() {
   let sellForm = $('#sellForm').serialize();
@@ -116,7 +101,7 @@ function AddToCart() {
 
   $.ajax({
     type: 'POST',
-    url: '../../caja.php',
+    url: '../caja.php',
     data: sellForm,
     success: function(response) {
       let dataResult = JSON.parse(response);
